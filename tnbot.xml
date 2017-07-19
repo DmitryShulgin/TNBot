@@ -22,7 +22,7 @@
 	<input pattern="* (температура в $Text)">
 	<var name="Zapros" value="Temp(TIN)&#38;&#38;"/>
 	<var name="ZAP" value="&#38;get"/>
-  <get url="http://http://77.50.254.24:25401//$ZAP_$Zapros" var="Temp" scope="user" >
+  <get url="http://http://77.50.254.24:25402//$ZAP_$Zapros" var="Temp" scope="user" >
   <var name="Temp2">  
    <script>
       <![CDATA[
