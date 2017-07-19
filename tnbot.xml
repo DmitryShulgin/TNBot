@@ -1,35 +1,118 @@
-<context>
-    <input pattern="(Привет|здоров) *">
-        <!-- Greet the user if we know his/her name -->
-        <output value="Привет $UserName!" if="full($UserName)"/>
-		
+﻿<context> 
 
-        <!-- Or activate an inner context to ask the user about his/her name -->
-        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
-            <output value="Привет! Как твое имя?"/>
+<input pattern="* *авториз* *">
+<output value="Введите код авторизации..."/>
+    <context modal="true">
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+     
+          <output value='Пользователь Дмитрий авторизован с правами владельца...' if='$UserName == "Дмитрий"'/>
+          <output value='Тестовый доступ разрешен...' if='$UserName == "тест"'/>
+          <output value='Пользователь Администратор авторизован с правами администратора...' if='$UserName == "админ"'/>
+     </input>
+     </context>
 
-            <input pattern="$Text">
-                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
-                <var name="UserName" value="$Text" scope="user"/>
-                <output value="Привет, $UserName!"/> <!-- Using the placeholder in output -->
-            </input>
-        </context>
-    </input>
-	
-	<input pattern="* (адрес $Number)">
-	<var name="IP_Number" value="$Number" scope="user"/>
-	</input>
-	<input pattern="* (температура в $Text)">
-	<var name="Zapros" value="Temp(TIN)&#38;&#38;"/>
-	<var name="ZAP" value="&#38;get"/>
-  <get url="http://http://77.50.254.24:25402//$ZAP_$Zapros" var="Temp" scope="user" >
-  <var name="Temp2">  
+ </input>
+
+
+<input pattern="* *ривет *">
+
+<get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+  <var name="MODE">  
    <script>
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_MODE', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+ </get>
+  
+  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "ТН выключен"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "ТН запуск..."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "ТН останов..."' scope="user"/>
+  <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == "Пауза"' scope="user"/>
+  
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
 		var newString = newString.replace('&get_Temp(TIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+   <get url="http://77.50.254.24:25401/&#38;get_datetime(TIME)&#38;&#38;" var="Temp2" scope="context" >
+  <var name="TIME">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp2.replace("=", "");
+                var newString = newString.replace("&&", ".");
+		var newString = newString.replace('&get_datetime(TIME)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+
+   <get url="http://77.50.254.24:25401/&#38;get_datetime(DATE)&#38;&#38;" var="Temp" scope="context" >
+  <var name="DATE">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", ".");
+		var newString = newString.replace('&get_datetime(DATE)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get> 
+ 
+  <get url="http://77.50.254.24:25401/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
+  <var name="errcode">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_errcode', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
+  <var name="error">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_error', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <var name="TBOILER">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TBOILER)', "");
 
         newString;
       ]]>
@@ -44,9 +127,2123 @@
     <param name="lon" value="$UserLongitude"/> -->
   </get>
 
-  <output value='$Temp2'/>
+  
+ 
+     
+        <output value="Привет! Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "0"'/>
+        <output value="Привет! Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "0"'/>
+
+    </input>
+
+
+
+
+
+<!-- ==============================================В ДОМЕ =================================================================================== -->	
+<input pattern="* [темп*|градус*] * дом*)">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Температура в доме $TIN °"/>  
+  </input>
+<!-- ============================================== НА УЛИЦЕ =================================================================================== -->
+<input pattern="* [темп*|градус*] * улиц* *">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура на улице $TOUT °'/>  
+  </input>
+  
+<!-- ============================================== ОБРАТКА =================================================================================== -->
+<input pattern="* [темп*|градус*] * обратк* *">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONING">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONING)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура обратки $TCONING °'/>  
+  </input>
+  
+  
+<!-- ============================================== ПОДАЧА =================================================================================== -->
+<input pattern="* [темп*|градус*] * подач* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONOUTG">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONOUTG)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура подачи $TCONOUTG °'/>  
+  </input>
+  
+  <!-- ============================================== ИЗ ГОКОНТУРА =================================================================================== -->
+<input pattern="* [темп*|градус*] из * (контур*|*еоконтур*) *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAING">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAING)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура из ГЕО контура $TEVAING °' if='$TEVAING != "-"'/>
+  <output value='Датчик не подключен' if='$TEVAING == "-"'/>    
+  </input>
+  
+<!-- ============================================== В ГОКОНТУРА =================================================================================== -->
+<input pattern="* [темп*|градус*] в * (контур*|*еоконтур*) *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAOUTG">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAOUTG)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура в ГЕО контур $TEVAOUTG °' if='$TEVAOUTG != "-"'/>
+  <output value='Датчик не подключен' if='$TEVAOUTG == "-"'/>    
+  </input>
+  
+  
+<!-- ============================================== ДАВЛЕНИЕ ИСПАРИТЕЛЯ =================================================================================== -->
+<input pattern="* давлени* * испар* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Press(PEVA)&#38;&#38;" var="Temp" scope="context" >
+  <var name="PEVA">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Press(PEVA)', "");
+                var newString = newString.replace('[t:', " бар, что соответствует температуре кипения ");
+                var newString = newString.replace(']', "°.");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Давление в испарителе $PEVA' if='$PEVA != "-"'/>
+  <output value='Датчик не подключен' if='$PEVA == "-"'/>    
+  </input>
+  
+<!-- ============================================== ДАВЛЕНИЕ КОНДЕНСАТОРА =================================================================================== -->
+<input pattern="* давлени* * конденс* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Press(PCON)&#38;&#38;" var="Temp" scope="context" >
+  <var name="PCON">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Press(PCON)', "");
+                var newString = newString.replace('[t:', " бар, что соответствует температуре конденсации ");
+                var newString = newString.replace(']', "°.");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Давление в испарителе $PCON бар' if='$PCON != "-"'/>
+  <output value='Датчик не подключен' if='$PCON == "-"'/>    
+  </input>
+  
+<!-- ============================================== ТЕМПЕРАТУРА НА ВСАСЕ =================================================================================== -->
+<input pattern="* [темп*|градус*] * (всас*|*вход*|кипен*) *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TRTOOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TRTOOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TRTOOUT)', "");
+                
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <var name="PERRTO" value="(num($TRTOOUT)*100 - num($TEVAOUT)*100)/100" scope="context"/>
+  
+  <output value='Температура фреона на входе в компрессор после РТО $TRTOOUT°. На выходе из испарителя $TEVAOUT°. Перегрев в РТО $PERRTO°.' if='$TRTOOUT != "-"'/>
+  <output value='Температура фреона на входе в компрессор $TEVAOUT°.' if='$TRTOOUT == "-"'/>
+  </input>
+
+<!-- ============================================== ФРЕОН В ИСПАРИТЕЛЬ =================================================================================== -->
+<input pattern="* [темп*|градус*] * вход* * испарит* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура фреона на входе в испаритель $TEVAIN°'/>  
+  </input>
+  
+<!-- ============================================== ФРЕОН ИЗ ИСПАРИТЕЛЯ =================================================================================== -->
+<input pattern="* [темп*|градус*] * выход* * испарит* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура фреона на выходе из испарителя $TEVAOUT°'/>  
+  </input>
+
+<!-- ============================================== ТЕМПЕРАТУРА КОМПРЕССОРА =================================================================================== -->
+<input pattern="* [темп*|градус*] * (компрес*|*башк*|нагнет*) *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCOMP)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCOMP">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCOMP)', "");
+                
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура компрессора $TCOMP°'/>
+  </input>
+  
+<!-- ============================================== ФРЕОН ИЗ КОНДЕНСАТОРА =================================================================================== -->
+<input pattern="* [темп*|градус*] * выход* * конденсатор* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура фреона на выходе из конденсатора $TCONOUT°'/>  
+  </input>  
+
+<!-- ============================================== ФРЕОН В КОНДЕНСАТОР =================================================================================== -->
+<input pattern="* [темп*|градус*] * вход* * конденсат* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value='Температура фреона на входе в конденсатор $TCONIN°'/>  
+  </input>
+
+ 
+<!-- ============================================== ГВС =================================================================================== -->
+ <input pattern="* [темп*|градус*] * (горяч*|*гвс*) *">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <var name="TBOILER">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  
+  
+  
+      <!--<param name="APPID" value="API_KEY"/>
+    <param name="units" value="metric"/>
+    <param name="lat" value="$UserLatitude"/>
+    <param name="lon" value="$UserLongitude"/> -->
+  </get>
+
+  <output value='Температура горячей воды $TBOILER°'/> 
+  </input>
+  
+  <!-- ============================================== ЦЕЛЕВАЯ ТЕМПЕРАТУРА =================================================================================== -->
+<input pattern="* целев* [темп*|градус*] *">
+  <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TEMP1)&#38;&#38;" var="Temp" scope="context" >
+  <var name="paramHeatHP1">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_paramHeatHP(TEMP1)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+    <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TEMP2)&#38;&#38;" var="Temp" scope="context" >
+  <var name="paramHeatHP2">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_paramHeatHP(TEMP2)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+      <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TARGET)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TARGET">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_paramHeatHP(TARGET)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <output value='Целевая температура - температура в доме - $paramHeatHP1°' if='$TARGET == "Дом:1;Обратка:0;"'/>
+  <output value='Целевая температура - температура обратки - $paramHeatHP2°' if='$TARGET == "Дом:0;Обратка:1;"'/>  
+  </input>
+  
+  
+<!-- ============================================== Температура испарителя =================================================================================== -->
+<input pattern="* [темп*|градус*] * испарит* *">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAING">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAING)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TEVAOUTG">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TEVAOUTG)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <var name="DTF" value="(num($TEVAOUT)*100 - num($TEVAIN)*100)/100" scope="context"/>
+  <var name="DTG" value="(num($TEVAING)*100 - num($TEVAOUTG)*100)/100" scope="context"/>
+  
+  <output value='Температура на входе испарителя по фреону $TEVAIN°. Температура на выходе испарителя по фреону $TEVAOUT°. Дельта по фреону $DTF°. Температура на входе испарителя по гликолю $TEVAING°. Температура на выходе испарителя по гликолю $TEVAOUTG°. Дельта по гликолю $DTG°.' if="$DTG != 0"/>  
+  <output value='Температура на входе испарителя по фреону $TEVAIN°. Температура на выходе испарителя по фреону $TEVAOUT°. Дельта по фреону $DTF°. Датчики по гликолю не установленны в данной конфигурации.' if="$DTG == 0"/>
+  </input>
+
+<!-- ============================================== Температура конденсатора =================================================================================== -->
+<input pattern="* [темп*|градус*] * конденсат* *">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONIN">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONIN)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONOUT">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONOUT)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONOUTG">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONOUTG)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TCONING">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TCONING)', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <var name="DTFC" value="(num($TCONIN)*100 - num($TCONOUT)*100)/100" scope="context"/>
+  <var name="DTGC" value="(num($TCONOUTG)*100 - num($TCONING)*100)/100" scope="context"/>
+  
+  <output value='Температура на входе конденсатора по фреону $TCONIN°. Температура на выходе конденсатора по фреону $TCONOUT°. Дельта по фреону $DTFC°. Температура на входе конденсатора по гликолю $TCONING°. Температура на выходе конденсатора по гликолю $TCONOUTG°. Дельта по гликолю $DTGC°.'/>  
+  </input>
+
+<!-- ============================================== Режим работы ТН =================================================================================== -->
+<input pattern="* режим* [работ*] * [насос*] *">
+  <get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+  <var name="MODE">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_MODE', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+ </get>
+  <output value='Тепловой насос выключен' if='$MODE == "Выключен"'/>
+  <output value='Тепловой насос включен в режиме отопления' if='$MODE == "Отопление"'/>
+  <output value='Тепловой насос включен в режиме подготовки горячей воды' if='$MODE == "ГВС"'/> 
+  <output value='Тепловой насос запускается' if='$MODE == "ТН запуск..."'/>
+  <output value='Тепловой насос останавливается.' if='$MODE == "ТН останов..."'/>
+  <output value='Пауза в режиме работы теплового насоса' if='$MODE == "Пауза"'/>
+  </input>
+  
+
+<!-- ============================================== ЗАПРОС ОШИБОК =================================================================================== -->
+<input pattern="* ошибк* *">  
+    <get url="http://77.50.254.24:25401/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
+  <var name="errcode">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_errcode', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+      <get url="http://77.50.254.24:25401/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
+  <var name="error">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_error', "");
+        newString;
+      ]]>
+    </script>
+  </var>  
+  </get>
+  
+  <output value='Ошибок нет. Все параметры в норме. $ModeText' if='$errcode == "0"'/>
+  <output value='Внимание, ошибка! $error' if='$errcode != "0"'/>
+  </input>
+  
+  
+
+<!-- =============================================================================================================================================================================================================================================================== -->
+<!-- ============================================= ВКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
+<input pattern="*  (запус*|включ*) * насо*">
+    <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+  <var name="ONHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_ON', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+  
+          <output value='Тепловой насос включается...'/>
+         
+    
+  </input>
+
+<!-- ============================================== ВЫКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
+<input pattern="* (выключ*|отклю*) * насо*">
+    <get url="http://77.50.254.24:25401/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
+  <var name="OFFHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_OFF', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+  
+          <output value='Тепловой насос выключается...'/>
+         
+    
+  </input>
+
+<!-- ============================================== ВКЛЮЧЕНИЕ ГВС =================================================================================== -->
+<input pattern="* включ* * (нагре* *|* гвс*)">
+    <get url="http://77.50.254.24:25401/&#38;set_Boiler(BOILER_ON=1)&#38;&#38;" var="Temp" scope="user" >
+  <var name="BOILER_ON">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Boiler(BOILER_ON)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+  <var name="ONHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_ON', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+              <output value='Тепловой насос работает в режиме подготовки горячей воды'/>
+
+         
+    
+  </input>
+
+<!-- ============================================== ВЫКЛЮЧЕНИЕ ГВС =================================================================================== -->
+<input pattern="* выключ* * (нагре* *|* гвс*)">
+    <get url="http://77.50.254.24:25401/&#38;set_Boiler(BOILER_ON=0)&#38;&#38;" var="Temp" scope="user" >
+  <var name="BOILER_ON">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Boiler(BOILER_ON)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+    
+      <get url="http://77.50.254.24:25401/&#38;get_modeHP&#38;&#38;" var="Temp" scope="user" >
+  <var name="modeHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_modeHP', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <get url="http://77.50.254.24:25401/&#38;set_OFF&#38;&#38;" var="Temp" scope="user"  >
+  <var name="OFFHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_OFF', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+      
+      
+      
+      <get url="http://77.50.254.24:25401/&#38;set_modeHP(1)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:1;Охлаждение:0;"' >
+  <var name="setHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_modeHP(1)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  
+        <get url="http://77.50.254.24:25401/&#38;set_modeHP(2)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:0;Охлаждение:1;"' >
+  <var name="setHP">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_modeHP(2)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+              <output value='Тепловой насос перешел в режим отопления' if='$modeHP == "Выключено:0;Отопление:1;Охлаждение:0;"'/>
+              <output value='Тепловой насос перешел в режим охлаждения' if='$modeHP == "Выключено:0;Отопление:0;Охлаждение:1;"'/>
+
+         
+    
+  </input>
+
+<!-- ============================================== ВКЛЮЧЕНИЕ РЕЛЕ =================================================================================== -->
+ <input pattern="* включ* * компрес* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RCOMP" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RCOMP)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения компрессора (через пускатель) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RCOMP" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RCOMP)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения компрессора (через пускатель) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+        
+<!-- ========================================================================= -->
+
+<input pattern="* включ* * насо* вход* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPI" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPI)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса входного контура (геоконтур) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPI" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPI)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса входного контура (геоконтур) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* включ* * насо* выход* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPO" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPO)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса выходного контура (отопление и ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPO" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPO)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса выходного контура (отопление и ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+
+<input pattern="* включ* * реверсив* (клап*|вентиль) *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RTRV" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RTRV)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Четырёх ходовой клапан включен' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RTRV" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RTRV)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Четырёх ходовой клапан включен' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* включ* * допол* нагре* вод* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RBOILER" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа бойлера (ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RBOILER" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа бойлера (ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+<input pattern="* включ* * допол* нагре* отоплен* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RHEAT" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RHEAT)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа системы отопления (электрокотел) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RHEAT" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RHEAT)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа системы отопления (электрокотел) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* включ* перв* вентилят* испарит* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN1" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN1)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №1 включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN1" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN1)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №1 включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* включ* втор* вентилят* испарит* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN2" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN2)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №2 включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN2" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN2)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №2 включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* *ключ* * *ходов* (кран*|вент*) *">
+    <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="R3WAY" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(R3WAY)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС включен' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="R3WAY" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(R3WAY)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС включен' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* включ* * насо* бойлер* *">
+    <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPB" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPB)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле насоса циркуляции бойлера (ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPB" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPB)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле насоса циркуляции бойлера (ГВС) включено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+
+
+
+<!-- ============================================== ВЫКЛЮЧЕНИЕ РЕЛЕ =================================================================================== -->
+<input pattern="* выключ* * компрес* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RCOMP" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RCOMP)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения компрессора (через пускатель) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RCOMP" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RCOMP)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения компрессора (через пускатель) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+        
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* * насо* вход* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPI" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPI)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса входного контура (геоконтур) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPI" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPI)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса входного контура (геоконтур) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* * насо* выход* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPO" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPO)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса выходного контура (отопление и ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPO" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPO)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения насоса выходного контура (отопление и ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+
+<input pattern="* выключ* * реверсив* (клап*|вентиль) *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RTRV" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RTRV)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Четырёх ходовой клапан выключен' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RTRV" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RTRV)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Четырёх ходовой клапан выключен' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* * допол* нагре* вод* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RBOILER" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа бойлера (ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RBOILER" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа бойлера (ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+<input pattern="* выключ* * допол* нагре* отоплен* *">
+  <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RHEAT" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RHEAT)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа системы отопления (электрокотел) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RHEAT" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RHEAT)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включение ТЭНа системы отопления (электрокотел) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* перв* вентилят* испарит* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN1" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN1)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №1 выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN1" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN1)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №1 выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* втор* вентилят* испарит* *">
+   <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN2" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN2)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №2 выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RFAN2" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RFAN2)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле включения вентилятора испарителя №2 выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* * *ходов* (кран*|вент*) *">
+    <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="R3WAY" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(R3WAY)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС выключен' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="R3WAY" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(R3WAY)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС выключен' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<input pattern="* выключ* * насо* бойлер* *">
+    <context if="empty($UserName)" modal="true">
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+        <context if='$UserName == "Дмитрий"' modal="true">
+          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPB" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPB)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле насоса циркуляции бойлера (ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  
+   
+          </input>  
+        </context>
+        
+   <context if='$UserName == "Дмитрий"'>
+  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+            <input pattern="$Text" scope="user">
+            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          <var name="RPUMPB" if='$Text == "да"'>  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_Relay(RPUMPB)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+  
+  <output value='Команда отменена...' if='$Text != "да"'/>
+  <output value='Реле насоса циркуляции бойлера (ГВС) выключено' if='$Text == "да"'/>
+  </input>  
+        </context>
+        
+        <context if='$UserName != "Дмитрий"'>
+  <output value='Доступ к управлению запрещен...'/>     
+        </context>       
+        
+  </input>
+<!-- ========================================================================= -->
+
+<!-- ==========================ПОЛОЖЕНИЕ ЭРВ =============================================== -->
+
+<input pattern="* (положен*|позиц*|шаг*) * (эрв|регулир*) *">
+  <get url="http://77.50.254.24:25401/&#38;get_EEV&#38;&#38;" var="Temp" scope="user" >
+  <var name="EEV">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_EEV', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+  <output value='ЭРВ открыто на $EEV шагов.'/>
   
   </input>
+
+<input pattern="* новое (положен*|позиц*|шаг*) * (эрв|регулир*) * $Number шаг* ">
+  <get url="http://77.50.254.24:25401/&#38;set_EEV($Number)&#38;&#38;" var="Temp" scope="user" >
+  <var name="setEEV">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_EEV($Number)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+  <output value='ЭРВ установлено в положение $Number шагов.'/>
+  
+  </input>
+  
+  <input pattern="* установит* * (эрв|регулир*) * (ноль|начал*|0) *">
+  <get url="http://77.50.254.24:25401/&#38;set_zeroEEV&#38;&#38;" var="Temp" scope="user" >
+  <var name="zeroEEV">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_zeroEEV', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  </get>
+
+  <output value='ЭРВ установлено в положение Ноль - ЭРВ закрыто.'/>
+  
+  </input>
+
+
+
+
+<input pattern="* (ON)">
+  <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+  <var name="ON">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&set_ON', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  
+  
+  
+      <!--<param name="APPID" value="API_KEY"/>
+    <param name="units" value="metric"/>
+    <param name="lat" value="$UserLatitude"/>
+    <param name="lon" value="$UserLongitude"/> -->
+  </get>
+
+  <output value='$ON'/>
+  
+  </input> 
+
+<input pattern="* (MODE)">
+  <get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+  <var name="MODE">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_MODE', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  
+  
+  
+      <!--<param name="APPID" value="API_KEY"/>
+    <param name="units" value="metric"/>
+    <param name="lat" value="$UserLatitude"/>
+    <param name="lon" value="$UserLongitude"/> -->
+  </get>
+
+  <output value='$MODE'/>
+  
+  </input> 
+
+<input pattern="* (BOILER)">
+  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <var name="TBOILER">  
+   <script>
+      <![CDATA[
+        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("&&", "");
+		var newString = newString.replace('&get_Temp(TBOILER)', "");
+
+        newString;
+      ]]>
+    </script>
+  </var>
+  
+  
+  
+      <!--<param name="APPID" value="API_KEY"/>
+    <param name="units" value="metric"/>
+    <param name="lat" value="$UserLatitude"/>
+    <param name="lon" value="$UserLongitude"/> -->
+  </get>
+
+  <output value='$TBOILER'/>
+  
+  </input>
+
 	
 	
 </context>
