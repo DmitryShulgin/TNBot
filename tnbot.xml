@@ -17,7 +17,7 @@
 
 <input pattern="* *ривет *">
 
-<get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+<get url="http://77.50.254.24:25402/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
   <var name="MODE">  
    <script>
       <![CDATA[
@@ -40,7 +40,7 @@
   <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == "Пауза"' scope="user"/>
   
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TIN">  
    <script>
       <![CDATA[        
@@ -53,7 +53,7 @@
   </var>  
   </get>
   
-   <get url="http://77.50.254.24:25401/&#38;get_datetime(TIME)&#38;&#38;" var="Temp2" scope="context" >
+   <get url="http://77.50.254.24:25402/&#38;get_datetime(TIME)&#38;&#38;" var="Temp2" scope="context" >
   <var name="TIME">  
    <script>
       <![CDATA[        
@@ -66,7 +66,7 @@
   </var>  
   </get>
 
-   <get url="http://77.50.254.24:25401/&#38;get_datetime(DATE)&#38;&#38;" var="Temp" scope="context" >
+   <get url="http://77.50.254.24:25402/&#38;get_datetime(DATE)&#38;&#38;" var="Temp" scope="context" >
   <var name="DATE">  
    <script>
       <![CDATA[        
@@ -79,7 +79,7 @@
   </var>  
   </get> 
  
-  <get url="http://77.50.254.24:25401/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
   <var name="errcode">  
    <script>
       <![CDATA[        
@@ -92,7 +92,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
   <var name="error">  
    <script>
       <![CDATA[        
@@ -105,7 +105,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
   <var name="TBOILER">  
    <script>
       <![CDATA[
@@ -141,7 +141,7 @@
 
 <!-- ==============================================В ДОМЕ =================================================================================== -->	
 <input pattern="* [темп*|градус*] * дом*)">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TIN">  
    <script>
       <![CDATA[        
@@ -157,7 +157,7 @@
   </input>
 <!-- ============================================== НА УЛИЦЕ =================================================================================== -->
 <input pattern="* [темп*|градус*] * улиц* *">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TOUT)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TOUT">  
    <script>
       <![CDATA[        
@@ -174,7 +174,7 @@
   
 <!-- ============================================== ОБРАТКА =================================================================================== -->
 <input pattern="* [темп*|градус*] * обратк* *">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONING">  
    <script>
       <![CDATA[        
@@ -192,7 +192,7 @@
   
 <!-- ============================================== ПОДАЧА =================================================================================== -->
 <input pattern="* [темп*|градус*] * подач* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONOUTG">  
    <script>
       <![CDATA[        
@@ -209,7 +209,7 @@
   
   <!-- ============================================== ИЗ ГОКОНТУРА =================================================================================== -->
 <input pattern="* [темп*|градус*] из * (контур*|*еоконтур*) *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAING">  
    <script>
       <![CDATA[        
@@ -227,7 +227,7 @@
   
 <!-- ============================================== В ГОКОНТУРА =================================================================================== -->
 <input pattern="* [темп*|градус*] в * (контур*|*еоконтур*) *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAOUTG">  
    <script>
       <![CDATA[        
@@ -246,7 +246,7 @@
   
 <!-- ============================================== ДАВЛЕНИЕ ИСПАРИТЕЛЯ =================================================================================== -->
 <input pattern="* давлени* * испар* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Press(PEVA)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Press(PEVA)&#38;&#38;" var="Temp" scope="context" >
   <var name="PEVA">  
    <script>
       <![CDATA[        
@@ -266,7 +266,7 @@
   
 <!-- ============================================== ДАВЛЕНИЕ КОНДЕНСАТОРА =================================================================================== -->
 <input pattern="* давлени* * конденс* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Press(PCON)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Press(PCON)&#38;&#38;" var="Temp" scope="context" >
   <var name="PCON">  
    <script>
       <![CDATA[        
@@ -286,7 +286,7 @@
   
 <!-- ============================================== ТЕМПЕРАТУРА НА ВСАСЕ =================================================================================== -->
 <input pattern="* [темп*|градус*] * (всас*|*вход*|кипен*) *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TRTOOUT)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TRTOOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TRTOOUT">  
    <script>
       <![CDATA[        
@@ -300,7 +300,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAOUT">  
    <script>
       <![CDATA[        
@@ -321,7 +321,7 @@
 
 <!-- ============================================== ФРЕОН В ИСПАРИТЕЛЬ =================================================================================== -->
 <input pattern="* [темп*|градус*] * вход* * испарит* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAIN">  
    <script>
       <![CDATA[        
@@ -338,7 +338,7 @@
   
 <!-- ============================================== ФРЕОН ИЗ ИСПАРИТЕЛЯ =================================================================================== -->
 <input pattern="* [темп*|градус*] * выход* * испарит* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAOUT">  
    <script>
       <![CDATA[        
@@ -355,7 +355,7 @@
 
 <!-- ============================================== ТЕМПЕРАТУРА КОМПРЕССОРА =================================================================================== -->
 <input pattern="* [темп*|градус*] * (компрес*|*башк*|нагнет*) *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCOMP)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TCOMP)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCOMP">  
    <script>
       <![CDATA[        
@@ -373,7 +373,7 @@
   
 <!-- ============================================== ФРЕОН ИЗ КОНДЕНСАТОРА =================================================================================== -->
 <input pattern="* [темп*|градус*] * выход* * конденсатор* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONOUT">  
    <script>
       <![CDATA[        
@@ -390,7 +390,7 @@
 
 <!-- ============================================== ФРЕОН В КОНДЕНСАТОР =================================================================================== -->
 <input pattern="* [темп*|градус*] * вход* * конденсат* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONIN">  
    <script>
       <![CDATA[        
@@ -408,7 +408,7 @@
  
 <!-- ============================================== ГВС =================================================================================== -->
  <input pattern="* [темп*|градус*] * (горяч*|*гвс*) *">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
   <var name="TBOILER">  
    <script>
       <![CDATA[
@@ -435,7 +435,7 @@
   
   <!-- ============================================== ЦЕЛЕВАЯ ТЕМПЕРАТУРА =================================================================================== -->
 <input pattern="* целев* [темп*|градус*] *">
-  <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TEMP1)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_paramHeatHP(TEMP1)&#38;&#38;" var="Temp" scope="context" >
   <var name="paramHeatHP1">  
    <script>
       <![CDATA[        
@@ -448,7 +448,7 @@
   </var>  
   </get>
   
-    <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TEMP2)&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_paramHeatHP(TEMP2)&#38;&#38;" var="Temp" scope="context" >
   <var name="paramHeatHP2">  
    <script>
       <![CDATA[        
@@ -461,7 +461,7 @@
   </var>  
   </get>
   
-      <get url="http://77.50.254.24:25401/&#38;get_paramHeatHP(TARGET)&#38;&#38;" var="Temp" scope="context" >
+      <get url="http://77.50.254.24:25402/&#38;get_paramHeatHP(TARGET)&#38;&#38;" var="Temp" scope="context" >
   <var name="TARGET">  
    <script>
       <![CDATA[        
@@ -481,7 +481,7 @@
   
 <!-- ============================================== Температура испарителя =================================================================================== -->
 <input pattern="* [темп*|градус*] * испарит* *">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAIN">  
    <script>
       <![CDATA[        
@@ -494,7 +494,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAOUT">  
    <script>
       <![CDATA[        
@@ -507,7 +507,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAING)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAING">  
    <script>
       <![CDATA[        
@@ -520,7 +520,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TEVAOUTG)&#38;&#38;" var="Temp" scope="context" >
   <var name="TEVAOUTG">  
    <script>
       <![CDATA[        
@@ -542,7 +542,7 @@
 
 <!-- ============================================== Температура конденсатора =================================================================================== -->
 <input pattern="* [темп*|градус*] * конденсат* *">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONIN">  
    <script>
       <![CDATA[        
@@ -555,7 +555,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONOUT)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONOUT">  
    <script>
       <![CDATA[        
@@ -568,7 +568,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONOUTG)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONOUTG">  
    <script>
       <![CDATA[        
@@ -581,7 +581,7 @@
   </var>  
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TCONING)&#38;&#38;" var="Temp" scope="context" >
   <var name="TCONING">  
    <script>
       <![CDATA[        
@@ -602,7 +602,7 @@
 
 <!-- ============================================== Режим работы ТН =================================================================================== -->
 <input pattern="* режим* [работ*] * [насос*] *">
-  <get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
   <var name="MODE">  
    <script>
       <![CDATA[
@@ -627,7 +627,7 @@
 
 <!-- ============================================== ЗАПРОС ОШИБОК =================================================================================== -->
 <input pattern="* ошибк* *">  
-    <get url="http://77.50.254.24:25401/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
+    <get url="http://77.50.254.24:25402/&#38;get_errcode&#38;&#38;" var="Temp" scope="context" >
   <var name="errcode">  
    <script>
       <![CDATA[        
@@ -639,7 +639,7 @@
     </script>
   </var>  
   </get>
-      <get url="http://77.50.254.24:25401/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
+      <get url="http://77.50.254.24:25402/&#38;get_error&#38;&#38;" var="Temp" scope="context" >
   <var name="error">  
    <script>
       <![CDATA[        
@@ -661,7 +661,7 @@
 <!-- =============================================================================================================================================================================================================================================================== -->
 <!-- ============================================= ВКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
 <input pattern="*  (запус*|включ*) * насо*">
-    <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+    <get url="http://77.50.254.24:25402/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
   <var name="ONHP">  
    <script>
       <![CDATA[
@@ -684,7 +684,7 @@
 
 <!-- ============================================== ВЫКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
 <input pattern="* (выключ*|отклю*) * насо*">
-    <get url="http://77.50.254.24:25401/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
+    <get url="http://77.50.254.24:25402/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
   <var name="OFFHP">  
    <script>
       <![CDATA[
@@ -707,7 +707,7 @@
 
 <!-- ============================================== ВКЛЮЧЕНИЕ ГВС =================================================================================== -->
 <input pattern="* включ* * (нагре* *|* гвс*)">
-    <get url="http://77.50.254.24:25401/&#38;set_Boiler(BOILER_ON=1)&#38;&#38;" var="Temp" scope="user" >
+    <get url="http://77.50.254.24:25402/&#38;set_Boiler(BOILER_ON=1)&#38;&#38;" var="Temp" scope="user" >
   <var name="BOILER_ON">  
    <script>
       <![CDATA[
@@ -722,7 +722,7 @@
   </var>
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
   <var name="ONHP">  
    <script>
       <![CDATA[
@@ -745,7 +745,7 @@
 
 <!-- ============================================== ВЫКЛЮЧЕНИЕ ГВС =================================================================================== -->
 <input pattern="* выключ* * (нагре* *|* гвс*)">
-    <get url="http://77.50.254.24:25401/&#38;set_Boiler(BOILER_ON=0)&#38;&#38;" var="Temp" scope="user" >
+    <get url="http://77.50.254.24:25402/&#38;set_Boiler(BOILER_ON=0)&#38;&#38;" var="Temp" scope="user" >
   <var name="BOILER_ON">  
    <script>
       <![CDATA[
@@ -761,7 +761,7 @@
   </get>
   
     
-      <get url="http://77.50.254.24:25401/&#38;get_modeHP&#38;&#38;" var="Temp" scope="user" >
+      <get url="http://77.50.254.24:25402/&#38;get_modeHP&#38;&#38;" var="Temp" scope="user" >
   <var name="modeHP">  
    <script>
       <![CDATA[
@@ -776,7 +776,7 @@
   </var>
   </get>
   
-  <get url="http://77.50.254.24:25401/&#38;set_OFF&#38;&#38;" var="Temp" scope="user"  >
+  <get url="http://77.50.254.24:25402/&#38;set_OFF&#38;&#38;" var="Temp" scope="user"  >
   <var name="OFFHP">  
    <script>
       <![CDATA[
@@ -793,7 +793,7 @@
       
       
       
-      <get url="http://77.50.254.24:25401/&#38;set_modeHP(1)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:1;Охлаждение:0;"' >
+      <get url="http://77.50.254.24:25402/&#38;set_modeHP(1)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:1;Охлаждение:0;"' >
   <var name="setHP">  
    <script>
       <![CDATA[
@@ -809,7 +809,7 @@
   </get>
   
   
-        <get url="http://77.50.254.24:25401/&#38;set_modeHP(2)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:0;Охлаждение:1;"' >
+        <get url="http://77.50.254.24:25402/&#38;set_modeHP(2)&#38;&#38;" var="Temp" scope="user" if='$modeHP == "Выключено:0;Отопление:0;Охлаждение:1;"' >
   <var name="setHP">  
    <script>
       <![CDATA[
@@ -840,7 +840,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RCOMP" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -868,7 +868,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RCOMP" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -904,7 +904,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPI" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -932,7 +932,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPI" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -967,7 +967,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPO" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -995,7 +995,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPO" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1031,7 +1031,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RTRV" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1059,7 +1059,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RTRV" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1094,7 +1094,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RBOILER" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1122,7 +1122,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RBOILER" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1156,7 +1156,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RHEAT" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1184,7 +1184,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RHEAT" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1219,7 +1219,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN1" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1247,7 +1247,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN1" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1282,7 +1282,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN2" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1310,7 +1310,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN2" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1345,7 +1345,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="R3WAY" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1373,7 +1373,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="R3WAY" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1408,7 +1408,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPB" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1436,7 +1436,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPB" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1475,7 +1475,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RCOMP" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1503,7 +1503,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RCOMP" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1539,7 +1539,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPI" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1567,7 +1567,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPI" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1602,7 +1602,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPO" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1630,7 +1630,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPO" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1666,7 +1666,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RTRV" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1694,7 +1694,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RTRV" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1729,7 +1729,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RBOILER" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1757,7 +1757,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RBOILER" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1791,7 +1791,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RHEAT" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1819,7 +1819,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RHEAT" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1854,7 +1854,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN1" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1882,7 +1882,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN1" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1917,7 +1917,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN2" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1945,7 +1945,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RFAN2" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -1980,7 +1980,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="R3WAY" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -2008,7 +2008,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="R3WAY" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -2043,7 +2043,7 @@
         <context if='$UserName == "Дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPB" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -2071,7 +2071,7 @@
    <context if='$UserName == "Дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://77.50.254.24:25401/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+            <get url="http://77.50.254.24:25402/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
           <var name="RPUMPB" if='$Text == "да"'>  
    <script>
       <![CDATA[
@@ -2101,7 +2101,7 @@
 <!-- ==========================ПОЛОЖЕНИЕ ЭРВ =============================================== -->
 
 <input pattern="* (положен*|позиц*|шаг*) * (эрв|регулир*) *">
-  <get url="http://77.50.254.24:25401/&#38;get_EEV&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_EEV&#38;&#38;" var="Temp" scope="user" >
   <var name="EEV">  
    <script>
       <![CDATA[
@@ -2121,7 +2121,7 @@
   </input>
 
 <input pattern="* новое (положен*|позиц*|шаг*) * (эрв|регулир*) * $Number шаг* ">
-  <get url="http://77.50.254.24:25401/&#38;set_EEV($Number)&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;set_EEV($Number)&#38;&#38;" var="Temp" scope="user" >
   <var name="setEEV">  
    <script>
       <![CDATA[
@@ -2141,7 +2141,7 @@
   </input>
   
   <input pattern="* установит* * (эрв|регулир*) * (ноль|начал*|0) *">
-  <get url="http://77.50.254.24:25401/&#38;set_zeroEEV&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;set_zeroEEV&#38;&#38;" var="Temp" scope="user" >
   <var name="zeroEEV">  
    <script>
       <![CDATA[
@@ -2164,7 +2164,7 @@
 
 
 <input pattern="* (ON)">
-  <get url="http://77.50.254.24:25401/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
   <var name="ON">  
    <script>
       <![CDATA[
@@ -2191,7 +2191,7 @@
   </input> 
 
 <input pattern="* (MODE)">
-  <get url="http://77.50.254.24:25401/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
   <var name="MODE">  
    <script>
       <![CDATA[
@@ -2218,7 +2218,7 @@
   </input> 
 
 <input pattern="* (BOILER)">
-  <get url="http://77.50.254.24:25401/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
+  <get url="http://77.50.254.24:25402/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
   <var name="TBOILER">  
    <script>
       <![CDATA[
