@@ -536,8 +536,8 @@
   </var>  
   </get>
   
-  <var name="DTF" value="(num($TEVAOUT)*100 - num($TEVAIN)*100)/100" scope="context"/>
-  <var name="DTG" value="(num($TEVAING)*100 - num($TEVAOUTG)*100)/100" scope="context"/>
+  <var name="DTF" value="(num($TEVAOUT)*100 - num($TEVAIN)*100)/100.0" scope="context"/>
+  <var name="DTG" value="(num($TEVAING)*100 - num($TEVAOUTG)*100)/100.0" scope="context"/>
   
   <output value='Температура на входе испарителя по фреону $TEVAIN°. Температура на выходе испарителя по фреону $TEVAOUT°. Дельта по фреону $DTF°. Температура на входе испарителя по гликолю $TEVAING°. Температура на выходе испарителя по гликолю $TEVAOUTG°. Дельта по гликолю $DTG°.' if="$DTG != 0"/>  
   <output value='Температура на входе испарителя по фреону $TEVAIN°. Температура на выходе испарителя по фреону $TEVAOUT°. Дельта по фреону $DTF°. Датчики по гликолю не установленны в данной конфигурации.' if="$DTG == 0"/>
