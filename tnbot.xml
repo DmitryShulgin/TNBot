@@ -30,8 +30,8 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=","");
-		var newString = newString.replace('get_MODE',"");
-		var newString = newString.replace(/\s/g, "");
+		newString = newString.replace('get_MODE',"");
+		newString = newString.replace(/\s+/g, '');
 
         newString;
       ]]>
@@ -52,8 +52,8 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=","");
-		var newString = newString.replace('get_Temp(TIN)',"");
-		var newString = newString.replace(/\s/g, "");
+		newString = newString.replace('get_Temp(TIN)',"");
+		newString = newString.replace(/\s+/g, '');
         newString;
       ]]>
     </script>
@@ -65,7 +65,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp2.replace("=","");
-                var newString = newString.replace('get_datetime(TIME)',"");
+                newString = newString.replace('get_datetime(TIME)',"");
         newString;
       ]]>
     </script>
