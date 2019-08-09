@@ -22,7 +22,7 @@
 </input>
 
 	
-<input pattern="* *ривет *">
+<input pattern="* контроллер *">
 
 <get url="http://62.140.252.108:25451/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
   <var name="MODE">  
