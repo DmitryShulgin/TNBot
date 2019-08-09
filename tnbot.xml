@@ -37,12 +37,12 @@
       ]]>
     </script>
   </var>
-  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "ТН выключен"' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
-  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "ТН запуск..."' scope="user"/>
-  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "ТН останов..."' scope="user"/>
-  <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == "Пауза"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == " ТН выключен  "' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == " Отопление  "' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == " ГВС  "' scope="user"/>
+  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == " ТН запуск...  "' scope="user"/>
+  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == " ТН останов...  "' scope="user"/>
+  <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == " Пауза  "' scope="user"/>
 	
 </get>
   
@@ -137,8 +137,8 @@
   
  
      
-        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "OK"'/>
-        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "OK"'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == " 0  "'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != " 0  "'/>
 
     </input>
 
