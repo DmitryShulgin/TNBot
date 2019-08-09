@@ -29,22 +29,22 @@
    <script>
       <![CDATA[
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_MODE', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace("&&","");
+		var newString = newString.replace('get_MODE',"");
 
         newString;
       ]]>
     </script>
   </var>
- </get>
-  
   <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "ТН выключен"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "ТН запуск..."' scope="user"/>
   <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "ТН останов..."' scope="user"/>
   <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == "Пауза"' scope="user"/>
+	
+</get>
   
   
   <get url="http://62.140.252.108:25451/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
