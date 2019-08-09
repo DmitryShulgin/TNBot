@@ -66,7 +66,7 @@
       <![CDATA[        
 		var newString = $Temp2.replace("=", "");
                 var newString = newString.replace("&&", ".");
-		var newString = newString.replace('&get_datetime(TIME)', "");
+		var newString = newString.replace('get_datetime(TIME)', "");
         newString;
       ]]>
     </script>
@@ -79,7 +79,7 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", ".");
-		var newString = newString.replace('&get_datetime(DATE)', "");
+		var newString = newString.replace('get_datetime(DATE)', "");
         newString;
       ]]>
     </script>
@@ -92,7 +92,7 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_errcode', "");
+		var newString = newString.replace('get_errcode', "");
         newString;
       ]]>
     </script>
@@ -105,7 +105,7 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_error', "");
+		var newString = newString.replace('get_error', "");
         newString;
       ]]>
     </script>
@@ -119,7 +119,7 @@
         
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TBOILER)', "");
+		var newString = newString.replace('get_Temp(TBOILER)', "");
 
         newString;
       ]]>
@@ -137,8 +137,8 @@
   
  
      
-        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "0"'/>
-        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "0"'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "OK"'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "OK"'/>
 
     </input>
 
