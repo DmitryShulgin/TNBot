@@ -65,7 +65,7 @@
 		var newString = $Temp2.replace("=","");
                 newString = newString.replace('get_datetime(TIME)',"");
 		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
+		newString = newString.replace(/\x7f\x7f*$/, ".");
       ]]>
     </script>
   </var>  
@@ -78,7 +78,7 @@
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_datetime(DATE)',"");
 		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, ". ");
+		newString = newString.replace(/\x7f\x7f*$/, ".");
       ]]>
     </script>
   </var>  
