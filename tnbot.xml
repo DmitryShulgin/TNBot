@@ -31,7 +31,7 @@
         
 		var newString = $Temp.replace("=","");
 		newString = newString.replace('get_MODE',"");
-		newString = newString.replace(/^%/,"");
+		newString = newString.replace("&nbsp;","");
 
         newString;
       ]]>
