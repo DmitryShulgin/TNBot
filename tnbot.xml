@@ -1,4 +1,9 @@
 ﻿<context> 
+	 
+<sample>
+        <item value="Контроллер теплового насоса"/>
+        <item value="Управление голосом"/>
+ </sample>
 
 <input pattern="* *авториз* *">
 <output value="Введите код авторизации..."/>
