@@ -258,9 +258,9 @@
 		var newString = newString.replace('get_Press(PEVA)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
-                var newString = newString.replace('[t:', " бар, что соответствует температуре кипения ");
-                var newString = newString.replace(']', "°.");
-        newString;
+                newString = newString.replace('[', " бар, что соответствует температуре кипения ");
+                newString = newString.replace(']', ".");
+        
       ]]>
     </script>
   </var>  
@@ -279,9 +279,9 @@
 		var newString = newString.replace('get_Press(PCON)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
-                var newString = newString.replace('[t:', " бар, что соответствует температуре конденсации ");
-                var newString = newString.replace(']', "°.");
-        newString;
+                newString = newString.replace('[', " бар, что соответствует температуре конденсации ");
+                newString = newString.replace(']', ".");
+        
       ]]>
     </script>
   </var>  
