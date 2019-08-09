@@ -32,8 +32,7 @@
 		var newString = $Temp.replace("=","");
 		newString = newString.replace('get_MODE',"");
 		newString = newString.replace(/^\x7f+/, "");
-
-        newString;
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -53,8 +52,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=","");
 		newString = newString.replace('get_Temp(TIN)',"");
+		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
-        newString;
       ]]>
     </script>
   </var>  
