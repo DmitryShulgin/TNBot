@@ -65,7 +65,7 @@
 		var newString = $Temp2.replace("=","");
                 newString = newString.replace('get_datetime(TIME)',"");
 		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, ".");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -78,7 +78,7 @@
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_datetime(DATE)',"");
 		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, ".");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -147,8 +147,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TIN)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -163,8 +163,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TOUT)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -180,8 +180,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONING)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -198,8 +198,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONOUTG)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -215,8 +215,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAING)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -233,8 +233,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAOUTG)', "");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -251,8 +251,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Press(PEVA)', "");
+		var newString = newString.replace('get_Press(PEVA)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
                 var newString = newString.replace('[t:', " бар, что соответствует температуре кипения ");
                 var newString = newString.replace(']', "°.");
         newString;
@@ -271,8 +272,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Press(PCON)', "");
+		var newString = newString.replace('get_Press(PCON)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
                 var newString = newString.replace('[t:', " бар, что соответствует температуре конденсации ");
                 var newString = newString.replace(']', "°.");
         newString;
@@ -291,10 +293,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TRTOOUT)', "");
-                
-        newString;
+		var newString = newString.replace('get_Temp(TRTOOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -305,9 +306,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -326,9 +327,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAIN)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAIN)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -343,9 +344,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -360,10 +361,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCOMP)', "");
-                
-        newString;
+		var newString = newString.replace('get_Temp(TCOMP)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -378,9 +378,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONOUT)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -395,9 +395,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONIN)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONIN)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -414,10 +414,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TBOILER)', "");
-
-        newString;
+		var newString = newString.replace('get_Temp(TBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -440,9 +439,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_paramHeatHP(TEMP1)', "");
-        newString;
+		var newString = newString.replace('get_paramHeatHP(TEMP1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -453,9 +452,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_paramHeatHP(TEMP2)', "");
-        newString;
+		var newString = newString.replace('get_paramHeatHP(TEMP2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -466,9 +465,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_paramHeatHP(TARGET)', "");
-        newString;
+		var newString = newString.replace('get_paramHeatHP(TARGET)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -486,9 +485,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAIN)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAIN)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -499,9 +498,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAOUT)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -512,9 +511,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAING)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAING)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -525,9 +524,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TEVAOUTG)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TEVAOUTG)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -547,9 +546,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONIN)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONIN)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -560,9 +559,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONOUT)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONOUT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -573,9 +572,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONOUTG)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONOUTG)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -586,9 +585,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TCONING)', "");
-        newString;
+		var newString = newString.replace('get_Temp(TCONING)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -608,10 +607,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_MODE', "");
-
-        newString;
+		var newString = newString.replace('get_MODE', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -632,9 +630,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_errcode', "");
-        newString;
+		var newString = newString.replace('get_errcode', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -644,9 +642,9 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_error', "");
-        newString;
+		var newString = newString.replace('get_error', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -667,10 +665,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_ON', "");
-
-        newString;
+		var newString = newString.replace('set_ON', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -690,10 +687,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_OFF', "");
-
-        newString;
+		var newString = newString.replace('set_OFF', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -713,10 +709,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Boiler(BOILER_ON)', "");
-
-        newString;
+		var newString = newString.replace('set_Boiler(BOILER_ON)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -728,10 +723,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_ON', "");
-
-        newString;
+		var newString = newString.replace('set_ON', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -751,10 +745,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Boiler(BOILER_ON)', "");
-
-        newString;
+		var newString = newString.replace('set_Boiler(BOILER_ON)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -767,10 +760,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_modeHP', "");
-
-        newString;
+		var newString = newString.replace('get_modeHP', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -782,10 +774,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_OFF', "");
-
-        newString;
+		var newString = newString.replace('set_OFF', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -799,10 +790,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_modeHP(1)', "");
-
-        newString;
+		var newString = newString.replace('set_modeHP(1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -815,10 +805,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_modeHP(2)', "");
-
-        newString;
+		var newString = newString.replace('set_modeHP(2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -846,10 +835,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RCOMP)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RCOMP)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -874,10 +862,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RCOMP)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RCOMP)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -910,10 +897,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPI)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPI)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -938,10 +924,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPI)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPI)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -973,10 +958,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPO)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPO)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1001,10 +985,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPO)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPO)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1037,10 +1020,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RTRV)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RTRV)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1065,10 +1047,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RTRV)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RTRV)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1100,10 +1081,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RBOILER)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1128,10 +1108,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RBOILER)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1162,10 +1141,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RHEAT)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RHEAT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1190,10 +1168,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RHEAT)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RHEAT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1225,10 +1202,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN1)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");;
       ]]>
     </script>
   </var>
@@ -1253,10 +1229,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN1)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1288,10 +1263,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN2)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1316,10 +1290,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN2)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1351,10 +1324,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(R3WAY)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(R3WAY)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1379,10 +1351,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(R3WAY)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(R3WAY)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1414,10 +1385,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPB)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPB)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1442,10 +1412,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPB)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPB)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1481,10 +1450,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RCOMP)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RCOMP)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1509,10 +1477,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RCOMP)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RCOMP)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1545,10 +1512,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPI)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPI)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1573,10 +1539,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPI)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPI)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1608,10 +1573,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPO)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPO)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1636,10 +1600,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPO)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPO)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1672,10 +1635,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RTRV)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RTRV)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1700,10 +1662,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RTRV)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RTRV)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1735,10 +1696,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RBOILER)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1763,10 +1723,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RBOILER)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1797,10 +1756,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RHEAT)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RHEAT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1825,10 +1783,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RHEAT)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RHEAT)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1860,10 +1817,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN1)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1888,10 +1844,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN1)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN1)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1923,10 +1878,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN2)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1951,10 +1905,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RFAN2)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RFAN2)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -1986,10 +1939,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(R3WAY)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(R3WAY)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2014,10 +1966,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(R3WAY)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(R3WAY)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2049,10 +2000,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPB)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPB)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2077,10 +2027,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_Relay(RPUMPB)', "");
-
-        newString;
+		var newString = newString.replace('set_Relay(RPUMPB)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2107,10 +2056,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_EEV', "");
-
-        newString;
+		var newString = newString.replace('get_EEV', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2127,10 +2075,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_EEV($Number)', "");
-
-        newString;
+		var newString = newString.replace('set_EEV($Number)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2147,10 +2094,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_zeroEEV', "");
-
-        newString;
+		var newString = newString.replace('set_zeroEEV', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2170,10 +2116,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&set_ON', "");
-
-        newString;
+		var newString = newString.replace('set_ON', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2197,10 +2142,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_MODE', "");
-
-        newString;
+		var newString = newString.replace('get_MODE', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
@@ -2224,10 +2168,9 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_Temp(TBOILER)', "");
-
-        newString;
+		var newString = newString.replace('get_Temp(TBOILER)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
