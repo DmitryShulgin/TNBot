@@ -30,7 +30,6 @@
       <![CDATA[
         
 		var newString = $Temp.replace("=","");
-		var newString = newString.replace("&&","");
 		var newString = newString.replace('get_MODE',"");
 
         newString;
@@ -51,9 +50,8 @@
   <var name="TIN">  
    <script>
       <![CDATA[        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_Temp(TIN)', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace('get_Temp(TIN)',"");
         newString;
       ]]>
     </script>
@@ -64,9 +62,8 @@
   <var name="TIME">  
    <script>
       <![CDATA[        
-		var newString = $Temp2.replace("=", "");
-                var newString = newString.replace("&&", ".");
-		var newString = newString.replace('get_datetime(TIME)', "");
+		var newString = $Temp2.replace("=","");
+                var newString = newString.replace('get_datetime(TIME)',"");
         newString;
       ]]>
     </script>
@@ -77,9 +74,8 @@
   <var name="DATE">  
    <script>
       <![CDATA[        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", ".");
-		var newString = newString.replace('get_datetime(DATE)', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace('get_datetime(DATE)',"");
         newString;
       ]]>
     </script>
@@ -90,9 +86,8 @@
   <var name="errcode">  
    <script>
       <![CDATA[        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_errcode', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace('get_errcode',"");
         newString;
       ]]>
     </script>
@@ -103,9 +98,8 @@
   <var name="error">  
    <script>
       <![CDATA[        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_error', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace('get_error',"");
         newString;
       ]]>
     </script>
@@ -117,9 +111,8 @@
    <script>
       <![CDATA[
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_Temp(TBOILER)', "");
+		var newString = $Temp.replace("=","");
+		var newString = newString.replace('get_Temp(TBOILER)',"");
 
         newString;
       ]]>
