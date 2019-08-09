@@ -151,7 +151,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TIN)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -167,7 +167,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TOUT)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -184,7 +184,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TCONING)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -202,7 +202,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TCONOUTG)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -219,7 +219,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TEVAING)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -237,7 +237,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("&&", "");
+		var newString = newString.replace("get_Temp(TEVAOUTG)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
