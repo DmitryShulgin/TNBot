@@ -36,15 +36,14 @@
       ]]>
     </script>
   </var>
-  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == " ТН выключен  "' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == " Отопление  "' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == " ГВС  "' scope="user"/>
-  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == " ТН запуск...  "' scope="user"/>
-  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == " ТН останов...  "' scope="user"/>
-  <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == " Пауза  "' scope="user"/>
-	
 </get>
-  
+	
+  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "ТН выключен"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "ТН запуск..."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "ТН останов..."' scope="user"/>
+  <var name="ModeText" value='Пауза в работе теплового насоса.' if='$MODE == "Пауза"' scope="user"/> 
   
   <get url="http://62.140.252.108:25451/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TIN">  
@@ -65,8 +64,8 @@
       <![CDATA[        
 		var newString = $Temp2.replace("=","");
                 newString = newString.replace('get_datetime(TIME)',"");
-		newString = newString.replace(/^%/,"");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -78,7 +77,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_datetime(DATE)',"");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -90,7 +90,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_errcode',"");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -102,7 +103,8 @@
       <![CDATA[        
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_error',"");
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
@@ -115,8 +117,8 @@
         
 		var newString = $Temp.replace("=","");
 		var newString = newString.replace('get_Temp(TBOILER)',"");
-
-        newString;
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>
