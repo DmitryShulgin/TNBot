@@ -31,7 +31,7 @@
         
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('get_MODE', "");
+		var newString = newString.replace('&get_MODE', "");
 
         newString;
       ]]>
