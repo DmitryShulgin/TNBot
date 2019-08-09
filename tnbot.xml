@@ -31,7 +31,7 @@
         
 		var newString = $Temp.replace("=", "");
 		var newString = newString.replace("&&", "");
-		var newString = newString.replace('&get_MODE', "");
+		var newString = newString.replace('get_MODE', "");
 
         newString;
       ]]>
@@ -137,8 +137,8 @@
   
  
      
-        <output value="Привет! Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "0"'/>
-        <output value="Привет! Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "0"'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Ошибок нет. Все параметры в норме." if='$errcode == "0"'/>
+        <output value="Привет! Я - контроллер управления Тепловым насосом. Текущая дата $DATE Текущее время $TIME $ModeText Температура в доме $TIN°. Температура горячей воды $TBOILER° Внимание, ошибка! $error" if='$errcode != "0"'/>
 
     </input>
 
