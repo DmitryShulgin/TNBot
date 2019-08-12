@@ -27,24 +27,9 @@
 
 <!-- ============================================== ПОКА =================================================================================== -->
 <input pattern="* (пока|до свидания|закрыть|ок) * ">
-    <get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
-  <var name="OFFHP">  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_OFF', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-
+      
+          <output value='До свидания, $UserName !'/>
   
-          <output value='Тепловой насос выключается...'/>
-         
-    
   </input>
 	 
 	
