@@ -537,8 +537,8 @@
   </var>  
   </get>
   
-  <var name="DTF" value="(num($TEVAOUT)*100 - num($TEVAIN)*100)/100.0" scope="context"/>
-  <var name="DTG" value="(num($TEVAING)*100 - num($TEVAOUTG)*100)/100.0" scope="context"/>
+  <var name="DTF" value="(num($TEVAOUT)*100 - num($TEVAIN)*100)/100.00" scope="context"/>
+  <var name="DTG" value="(num($TEVAING)*100 - num($TEVAOUTG)*100)/100.00" scope="context"/>
   
   <output value='Температура на входе испарителя по фреону $TEVAIN°. Температура на выходе испарителя по фреону $TEVAOUT°. Дельта по фреону $DTF°. Температура на входе испарителя по гликолю $TEVAING°. Температура на выходе испарителя по гликолю $TEVAOUTG°. Дельта по гликолю $DTG°.'/>  
   </input>
@@ -597,8 +597,8 @@
   </var>  
   </get>
   
-  <var name="DTFC" value="(num($TCONIN)*100 - num($TCONOUT)*100)/100" scope="context"/>
-  <var name="DTGC" value="(num($TCONOUTG)*100 - num($TCONING)*100)/100" scope="context"/>
+  <var name="DTFC" value="(num($TCONIN)*100 - num($TCONOUT)*100)/100.00" scope="context"/>
+  <var name="DTGC" value="(num($TCONOUTG)*100 - num($TCONING)*100)/100.00" scope="context"/>
   
   <output value='Температура на входе конденсатора по фреону $TCONIN°. Температура на выходе конденсатора по фреону $TCONOUT°. Дельта по фреону $DTFC°. Температура на входе конденсатора по гликолю $TCONING°. Температура на выходе конденсатора по гликолю $TCONOUTG°. Дельта по гликолю $DTGC°.'/>  
   </input>
@@ -677,7 +677,7 @@
   				<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     					<input pattern="$Text" scope="user">
     						<var name="UserName" value="$Text" scope="user"/>
-        						<context if='$UserName == "дмитрий"' modal="true">
+        						<context if='$UserName == "дмитрий"'>
           							<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             							<input pattern="$Text" scope="user">
             							<get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
