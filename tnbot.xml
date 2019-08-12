@@ -830,7 +830,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -851,13 +851,13 @@
   <output value='Реле включения компрессора (через пускатель) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -879,7 +879,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -892,7 +892,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -913,13 +913,13 @@
   <output value='Реле включения насоса входного контура (геоконтур) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -941,7 +941,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -953,7 +953,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -974,13 +974,13 @@
   <output value='Реле включения насоса выходного контура (отопление и ГВС) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1002,7 +1002,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1015,7 +1015,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1036,13 +1036,13 @@
   <output value='Четырёх ходовой клапан включен' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1064,7 +1064,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1076,7 +1076,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1097,13 +1097,13 @@
   <output value='Реле включение ТЭНа бойлера (ГВС) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1125,7 +1125,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1136,7 +1136,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1157,13 +1157,13 @@
   <output value='Реле включение ТЭНа системы отопления (электрокотел) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1185,7 +1185,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1197,7 +1197,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1218,13 +1218,13 @@
   <output value='Реле включения вентилятора испарителя №1 включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1246,7 +1246,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1258,7 +1258,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1279,13 +1279,13 @@
   <output value='Реле включения вентилятора испарителя №2 включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1307,7 +1307,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1319,7 +1319,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1340,13 +1340,13 @@
   <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС включен' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1368,7 +1368,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1380,7 +1380,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1401,13 +1401,13 @@
   <output value='Реле насоса циркуляции бойлера (ГВС) включено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1429,7 +1429,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1445,7 +1445,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1466,13 +1466,13 @@
   <output value='Реле включения компрессора (через пускатель) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1494,7 +1494,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1507,7 +1507,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1528,13 +1528,13 @@
   <output value='Реле включения насоса входного контура (геоконтур) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1556,7 +1556,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1568,7 +1568,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1589,13 +1589,13 @@
   <output value='Реле включения насоса выходного контура (отопление и ГВС) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1617,7 +1617,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1630,7 +1630,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1651,13 +1651,13 @@
   <output value='Четырёх ходовой клапан выключен' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1679,7 +1679,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1691,7 +1691,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1712,13 +1712,13 @@
   <output value='Реле включение ТЭНа бойлера (ГВС) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1740,7 +1740,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1751,7 +1751,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1772,13 +1772,13 @@
   <output value='Реле включение ТЭНа системы отопления (электрокотел) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1800,7 +1800,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1812,7 +1812,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1833,13 +1833,13 @@
   <output value='Реле включения вентилятора испарителя №1 выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1861,7 +1861,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1873,7 +1873,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1894,13 +1894,13 @@
   <output value='Реле включения вентилятора испарителя №2 выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1922,7 +1922,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1934,7 +1934,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1955,13 +1955,13 @@
   <output value='Трех ходовой кран, переключение ТН между отоплением и ГВС выключен' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1983,7 +1983,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
@@ -1995,7 +1995,7 @@
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     <input pattern="$Text" scope="user">
     <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "Дмитрий"' modal="true">
+        <context if='$UserName == "дмитрий"' modal="true">
           <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2016,13 +2016,13 @@
   <output value='Реле насоса циркуляции бойлера (ГВС) выключено' if='$Text == "да"'/>
   </input>  
         </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "Дмитрий"'/>
+  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
   
    
           </input>  
         </context>
         
-   <context if='$UserName == "Дмитрий"'>
+   <context if='$UserName == "дмитрий"'>
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2044,7 +2044,7 @@
   </input>  
         </context>
         
-        <context if='$UserName != "Дмитрий"'>
+        <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
         </context>       
         
