@@ -1,21 +1,4 @@
-    <input pattern="(Привет|здоров) *">
-        <!-- Greet the user if we know his/her name -->
-        <output value="Привет $UserName!" if="full($UserName)"/>
-		
-
-        <!-- Or activate an inner context to ask the user about his/her name -->
-        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
-            <output value="Привет! Как твое имя?"/>
-
-            <input pattern="$Text">
-                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
-                <var name="UserName" value="$Text" scope="user"/>
-                <output value="Привет, $UserName!"/> <!-- Using the placeholder in output -->
-            </input>
-        </context>
-    </input>
-	
-﻿<context> 
+<context> 
 	 
 <input pattern="*">
 	 <output value="Привет! Я умею управлять Народным контроллером теплового насоса. Вы можете спросить меня какая температура на улице, в доме и в баке ГВС, узнать основные параметры работы теплового насоса, включить и выключить тепловой насос, управлять отдельными узлами теплового насоса."/> 
@@ -449,13 +432,6 @@
       ]]>
     </script>
   </var>
-  
-  
-  
-      <!--<param name="APPID" value="API_KEY"/>
-    <param name="units" value="metric"/>
-    <param name="lat" value="$UserLatitude"/>
-    <param name="lon" value="$UserLongitude"/> -->
   </get>
 
   <output value='Температура горячей воды $TBOILER°'/> 
@@ -476,7 +452,7 @@
   </var>  
   </get>
   
-    <get url="http://62.140.252.108:25451/&#38;get_Heat(TEMP2)&#38;&#38;" var="Temp" scope="context" >
+  <get url="http://62.140.252.108:25451/&#38;get_Heat(TEMP2)&#38;&#38;" var="Temp" scope="context" >
   <var name="paramHeatHP2">  
    <script>
       <![CDATA[        
@@ -694,248 +670,224 @@
 <!-- =============================================================================================================================================================================================================================================================== -->
 <!-- ============================================= ВКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
  <input pattern="*  (запус*|включ*) * насо*">
-  <context if="empty($UserName)" modal="true">
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
-    <input pattern="$Text" scope="user">
-    <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "дмитрий"' modal="true">
-          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
-            <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
-          <var name="ONHP" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
+  		<context if="empty($UserName)" modal="true">
+  				<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    					<input pattern="$Text" scope="user">
+    						<var name="UserName" value="$Text" scope="user"/>
+        						<context if='$UserName == "дмитрий"' modal="true">
+          							<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            							<input pattern="$Text" scope="user">
+            							<get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
+          								<var name="ONHP" if='$Text == "да"'>  
+   											<script>
+      										<![CDATA[        
+											var newString = $Temp.replace("=", "");
+											newString = newString.replace('set_ON', "");
+											newString = newString.replace(/^\x7f+/, "");
+											newString = newString.replace(/\x7f\x7f*$/, "");
+      										]]>
+    										</script>
+  										</var>
+  										</get>
+  										<output value='Команда отменена...' if='$Text != "да"'/>
+  										<output value='Тепловой насос включается...' if='$Text == "да"'/>
+  										</input>  
+        						</context>
+  								<output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
+						</input>  
+      	</context>
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_ON', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-  
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос включается...' if='$Text == "да"'/>
-  </input>  
-        </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
-  
-   
-          </input>  
-        </context>
-        
-   <context if='$UserName == "дмитрий"'>
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+  <context if='$UserName == "дмитрий"'>
+  		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" if='$Text == "да"'>
-          <var name="ONHP" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
+          	<var name="ONHP" if='$Text == "да"'>  
+   				<script>
+				<![CDATA[        
+				var newString = $Temp.replace("=", "");
+				newString = newString.replace('set_ON', "");
+				newString = newString.replace(/^\x7f+/, "");
+				newString = newString.replace(/\x7f\x7f*$/, "");
+      			]]>
+    			</script>
+  			</var>
+  			</get>  
+  			<output value='Команда отменена...' if='$Text != "да"'/>
+  			<output value='Тепловой насос включается...' if='$Text == "да"'/>
+  			</input>  
+  </context>
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_ON', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-  
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос включается...' if='$Text == "да"'/>
-  </input>  
-        </context>
-        
-        <context if='$UserName != "дмитрий"'>
+  <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
-        </context>       
-        
-  </input>
+  </context>
+ </input>
 
 <!-- ============================================== ВЫКЛЮЧЕНИЕ ТЕПЛОВОГО НАСОСА =================================================================================== -->
 <input pattern="* (выключ*|отклю*) * насо*">
   <context if="empty($UserName)" modal="true">
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
-    <input pattern="$Text" scope="user">
-    <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "дмитрий"' modal="true">
-          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
-            <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
-          <var name="OFFHP" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_OFF', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
+  		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    		<input pattern="$Text" scope="user">
+    		<var name="UserName" value="$Text" scope="user"/>
+        		<context if='$UserName == "дмитрий"' modal="true">
+          		<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            		<input pattern="$Text" scope="user">
+            			<get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" scope="user" >
+          				<var name="OFFHP" if='$Text == "да"'>  
+   							<script>
+      						<![CDATA[        
+							var newString = $Temp.replace("=", "");
+							newString = newString.replace('set_OFF', "");
+							newString = newString.replace(/^\x7f+/, "");
+							newString = newString.replace(/\x7f\x7f*$/, "");
+      						]]>
+    						</script>
+  						</var>
+  						</get>
   
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос выключается...' if='$Text == "да"'/>
-  </input>  
-        </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
-  
-   
+  						<output value='Команда отменена...' if='$Text != "да"'/>
+  						<output value='Тепловой насос выключается...' if='$Text == "да"'/>
+  					</input>  
+        		</context>
+  				<output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
           </input>  
-        </context>
+  </context>
         
-   <context if='$UserName == "дмитрий"'>
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+  <context if='$UserName == "дмитрий"'>
+  		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" if='$Text == "да"'>
-          <var name="OFFHP" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
+            	<get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" if='$Text == "да"'>
+          			<var name="OFFHP" if='$Text == "да"'>  
+   						<script>
+      					<![CDATA[        
+						var newString = $Temp.replace("=", "");
+						newString = newString.replace('set_OFF', "");
+						newString = newString.replace(/^\x7f+/, "");
+						newString = newString.replace(/\x7f\x7f*$/, "");
+      					]]>
+    					</script>
+  					</var>
+  				</get>  
+  			<output value='Команда отменена...' if='$Text != "да"'/>
+  			<output value='Тепловой насос выключается...' if='$Text == "да"'/>
+  			</input>  
+  </context>
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_OFF', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-  
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос выключается...' if='$Text == "да"'/>
-  </input>  
-        </context>
-        
-        <context if='$UserName != "дмитрий"'>
-  <output value='Доступ к управлению запрещен...'/>     
-        </context>       
-        
-  </input>
+  <context if='$UserName != "дмитрий"'>
+  	<output value='Доступ к управлению запрещен...'/>     
+  </context>       
+
+</input>
 
 <!-- ============================================== ВКЛЮЧЕНИЕ ГВС =================================================================================== -->
 <input pattern="* включ* * (нагре* *|* гвс*)">
   <context if="empty($UserName)" modal="true">
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
-    <input pattern="$Text" scope="user">
-    <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "дмитрий"' modal="true">
-          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
-            <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=1)&#38;&#38;" var="Temp" scope="user" >
-          <var name="BOILER_ON" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
+  		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    		<input pattern="$Text" scope="user">
+    			<var name="UserName" value="$Text" scope="user"/>
+        			<context if='$UserName == "дмитрий"' modal="true">
+          				<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            				<input pattern="$Text" scope="user">
+            					<get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=1)&#38;&#38;" var="Temp" scope="user" >
+          						<var name="BOILER_ON" if='$Text == "да"'>  
+   								<script>
+      							<![CDATA[        
+								var newString = $Temp.replace("=", "");
+								newString = newString.replace('set_Boiler(ON)', "");
+								newString = newString.replace(/^\x7f+/, "");
+								newString = newString.replace(/\x7f\x7f*$/, "");
+      							]]>
+    							</script>
+  								</var>
+  								</get>  
+  							<output value='Команда отменена...' if='$Text != "да"'/>
+  							<output value='Тепловой насос работает в режиме подготовки горячей воды' if='$Text == "да"'/>
+  							</input>  
+     				</context>
+  					<output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
+    		</input>  
+  </context>
         
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_Boiler(ON)', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
+  <context if='$UserName == "дмитрий"'>
+  	<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
+		<input pattern="$Text" scope="user">
+         <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
+         <var name="BOILER_ON" if='$Text == "да"'>  
+   			<script>
+      		<![CDATA[        
+			var newString = $Temp.replace("=", "");
+			newString = newString.replace('set_Boiler(ON)', "");
+			newString = newString.replace(/^\x7f+/, "");
+			newString = newString.replace(/\x7f\x7f*$/, "");
+      		]]>
+    		</script>
+  		</var>
+  		</get>
   
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос работает в режиме подготовки горячей воды' if='$Text == "да"'/>
-  </input>  
-        </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
-  
-   
-          </input>  
-        </context>
+  		<output value='Команда отменена...' if='$Text != "да"'/>
+  		<output value='Тепловой насос работает в режиме подготовки горячей воды' if='$Text == "да"'/>
+  	</input>  
+  </context>
         
-   <context if='$UserName == "дмитрий"'>
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
-            <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
-          <var name="BOILER_ON" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_Boiler(ON)', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-  
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Тепловой насос работает в режиме подготовки горячей воды' if='$Text == "да"'/>
-  </input>  
-        </context>
-        
-        <context if='$UserName != "дмитрий"'>
-  <output value='Доступ к управлению запрещен...'/>     
-        </context>       
-        
-  </input>
+  <context if='$UserName != "дмитрий"'>
+  	<output value='Доступ к управлению запрещен...'/>     
+  </context>       
+</input>
 
 
 
 <!-- ============================================== ВЫКЛЮЧЕНИЕ ГВС =================================================================================== -->
 <input pattern="* выключ* * (нагре* *|* гвс*)">
-
-  <context if="empty($UserName)" modal="true">
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
-    <input pattern="$Text" scope="user">
-    <var name="UserName" value="$Text" scope="user"/>
-        <context if='$UserName == "дмитрий"' modal="true">
-          <output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+	<context if="empty($UserName)" modal="true">
+  	<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
+    	<input pattern="$Text" scope="user">
+    		<var name="UserName" value="$Text" scope="user"/>
+        		<context if='$UserName == "дмитрий"' modal="true">
+          		<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
+            		<input pattern="$Text" scope="user">
+            			<get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=0)&#38;&#38;" var="Temp" scope="user" >
+          				<var name="BOILER_OFF" if='$Text == "да"'>  
+   						<script>
+      					<![CDATA[        
+						var newString = $Temp.replace("=", "");
+						newString = newString.replace('set_Boiler(ON)', "");
+						newString = newString.replace(/^\x7f+/, "");
+						newString = newString.replace(/\x7f\x7f*$/, "");
+      					]]>
+    					</script>
+  						</var>
+  						</get>  
+  						<output value='Команда отменена...' if='$Text != "да"'/>
+  						<output value='Режим ГВС выключен.' if='$Text == "да"'/>
+  					</input>  
+        		</context>
+  				<output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
+	    </input>  
+	 </context>
+        
+  <context if='$UserName == "дмитрий"'>
+  		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=0)&#38;&#38;" var="Temp" scope="user" >
-          <var name="BOILER_OFF" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_Boiler(ON)', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
+            	<get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
+          			<var name="BOILER_ON" if='$Text == "да"'>  
+   					<script>
+      				<![CDATA[        
+					var newString = $Temp.replace("=", "");
+					newString = newString.replace('set_Boiler(ON)', "");
+					newString = newString.replace(/^\x7f+/, "");
+					newString = newString.replace(/\x7f\x7f*$/, "");
+      				]]>
+    				</script>
+  					</var>
+  				</get>
   
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Режим ГВС выключен.' if='$Text == "да"'/>
-  </input>  
-        </context>
-  <output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
-  
-   
-          </input>  
-        </context>
+  				<output value='Команда отменена...' if='$Text != "да"'/>
+  				<output value='Режим ГВС выключен.' if='$Text == "да"'/>
+  			</input>  
+ 	</context>
         
-   <context if='$UserName == "дмитрий"'>
-  <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
-            <input pattern="$Text" scope="user">
-            <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
-          <var name="BOILER_ON" if='$Text == "да"'>  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_Boiler(ON)', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  </get>
-  
-  <output value='Команда отменена...' if='$Text != "да"'/>
-  <output value='Режим ГВС выключен.' if='$Text == "да"'/>
-  </input>  
-        </context>
-        
-        <context if='$UserName != "дмитрий"'>
+  <context if='$UserName != "дмитрий"'>
   <output value='Доступ к управлению запрещен...'/>     
-        </context>       
+  </context>       
         
   </input>
 
