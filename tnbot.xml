@@ -29,7 +29,8 @@
 <input pattern="* (пока|до свидания|закрыть|ок) * ">
       
           <output value="До свидания, $UserName!" if="full($UserName)"/>
- 
+	  <output value="До свидания!" if="empty($UserName)"/>
+  
   </input>
 	 
 	
