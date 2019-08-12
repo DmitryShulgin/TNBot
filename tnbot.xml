@@ -50,9 +50,9 @@
   </var>
 </get>
 	
-  <var name="ModeText" value='Тепловой насос работает. Режим Пауза' if='$MODE == "Пауза"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос работает. Режим Пауза.' if='$MODE == "Пауза"' scope="user"/>
   <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "Выключен"' scope="user"/>
-  <var name="ModeText" value='Идет перезапуск теплового насоса' if='$MODE == "Перезапуск..."' scope="user"/>
+  <var name="ModeText" value='Идет перезапуск теплового насоса.' if='$MODE == "Перезапуск..."' scope="user"/>
   <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "Пуск..."' scope="user"/>
   <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "Останов..."' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания отопления.' if='$MODE == "Ожид. Нагр."' scope="user"/>  
@@ -63,7 +63,7 @@
   <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Идет разморозка воздушного испарителя.' if='$MODE == "Разморозка"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания задачи для теплового насоса.' if='$MODE == "Ожидание"' scope="user"/>
-  <var name="ModeText" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}' if='$MODE == "Ошибка"' scope="user"/>
+  <var name="ModeText" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}.' if='$MODE == "Ошибка"' scope="user"/>
   
   <get url="http://62.140.252.108:25451/&#38;get_Temp(TIN)&#38;&#38;" var="Temp" scope="context" >
   <var name="TIN">  
@@ -618,21 +618,24 @@
     </script>
   </var>
  </get>
-  <var name="MODE" value='Тепловой насос работает. Режим Пауза' if='$MODE == "Пауза"' scope="user"/>
-  <var name="MODE" value='Тепловой насос выключен.' if='$MODE == "Выключен"' scope="user"/>
-  <var name="MODE" value='Идет перезапуск теплового насоса' if='$MODE == "Перезапуск..."' scope="user"/>
-  <var name="MODE" value='Тепловой насос запускается.' if='$MODE == "Пуск..."' scope="user"/>
-  <var name="MODE" value='Тепловой насос останавливается.' if='$MODE == "Останов..."' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим ожидания отопления.' if='$MODE == "Ожид. Нагр."' scope="user"/>  
-  <var name="MODE" value='Тепловой насос включен. Режим ожидания охлаждения.' if='$MODE == "Ожид. Охл."' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим ожидания ГВС.' if='$MODE == "Ожид. ГВС"' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим охлаждения.' if='$MODE == "Охлаждение"' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Идет разморозка воздушного испарителя.' if='$MODE == "Разморозка"' scope="user"/>
-  <var name="MODE" value='Тепловой насос включен. Режим ожидания задачи для теплового насоса.' if='$MODE == "Ожидание"' scope="user"/>
-  <var name="MODE" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}' if='$MODE == "Ошибка"' scope="user"/>
-  </input>
+  <var name="ModeText" value='Тепловой насос работает. Режим Пауза' if='$MODE == "Пауза"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос выключен.' if='$MODE == "Выключен"' scope="user"/>
+  <var name="ModeText" value='Идет перезапуск теплового насоса' if='$MODE == "Перезапуск..."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос запускается.' if='$MODE == "Пуск..."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос останавливается.' if='$MODE == "Останов..."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ожидания отопления.' if='$MODE == "Ожид. Нагр."' scope="user"/>  
+  <var name="ModeText" value='Тепловой насос включен. Режим ожидания охлаждения.' if='$MODE == "Ожид. Охл."' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ожидания ГВС.' if='$MODE == "Ожид. ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим охлаждения.' if='$MODE == "Охлаждение"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Идет разморозка воздушного испарителя.' if='$MODE == "Разморозка"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ожидания задачи для теплового насоса.' if='$MODE == "Ожидание"' scope="user"/>
+  <var name="ModeText" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}' if='$MODE == "Ошибка"' scope="user"/>
+
+<output value='$ModeText'/>
+
+</input>
   
 
 <!-- ============================================== ЗАПРОС ОШИБОК =================================================================================== -->
