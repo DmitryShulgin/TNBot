@@ -28,8 +28,12 @@
 <!-- ============================================== ПОКА =================================================================================== -->
 <input pattern="* (пока|до свидания|закрыть|ок) * ">
       
-          <output value="До свидания, $UserName!" if="full($UserName)"/>
+		  <output value="До свидания, $UserName!" if="full($UserName)"/>
 		  <output value="До свидания!" if="empty($UserName)"/>
+		  
+		  <context modal="true">
+    		<var name="UserName" value="" scope="user"/>
+		  </context>
   
   </input>
 	 
