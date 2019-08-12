@@ -717,8 +717,15 @@
   			</input>  
   </context>
         
-  <context if='$UserName != "дмитрий"'>
-  <output value='Доступ к управлению запрещен...'/>     
+  <context if='$UserName != "дмитрий"' modal="true">
+  	<output value="Доступ к управлению запрещен... Авторизуйтесь, пожалуйста."/>
+    					<input pattern="$Text" scope="user">
+    						<var name="UserName" value="$Text" scope="user"/>
+        						<context if='$UserName == "дмитрий"'>
+          							<output value='Пользователь Дмитрий авторизован с правами владельца. Повторите команду!'/>
+        						</context>
+  						<output value='Доступ к управлению запрещен...' if='$UserName != "дмитрий"'/>
+						</input>
   </context>
  </input>
 
