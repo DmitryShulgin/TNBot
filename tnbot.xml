@@ -29,7 +29,7 @@
 <input pattern="* (пока|до свидания|закрыть|ок) * ">
       
           <output value="До свидания, $UserName!" if="full($UserName)"/>
-	  <output value="До свидания!" if="empty($UserName)"/>
+		  <output value="До свидания!" if="empty($UserName)"/>
   
   </input>
 	 
@@ -305,7 +305,7 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('get_Temp(TRTOOUT)', "");
+		var newString = newString.replace('get_Temp(TCOMPIN)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
