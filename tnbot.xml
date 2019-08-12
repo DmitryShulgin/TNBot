@@ -61,7 +61,7 @@
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания ГВС.' if='$MODE == "Ожид. ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим охлаждения.' if='$MODE == "Охлаждение"' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "Нагрев ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Идет разморозка воздушного испарителя.' if='$MODE == "Разморозка"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания задачи для теплового насоса.' if='$MODE == "Ожидание"' scope="user"/>
   <var name="ModeText" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}.' if='$MODE == "Ошибка"' scope="user"/>
@@ -629,7 +629,7 @@
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания ГВС.' if='$MODE == "Ожид. ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим отопления.' if='$MODE == "Отопление"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим охлаждения.' if='$MODE == "Охлаждение"' scope="user"/>
-  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "ГВС"' scope="user"/>
+  <var name="ModeText" value='Тепловой насос включен. Режим ГВС.' if='$MODE == "Нагрев ГВС"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Идет разморозка воздушного испарителя.' if='$MODE == "Разморозка"' scope="user"/>
   <var name="ModeText" value='Тепловой насос включен. Режим ожидания задачи для теплового насоса.' if='$MODE == "Ожидание"' scope="user"/>
   <var name="ModeText" value='Внимание! Ошибка в работе теплового насоса! Подробности по запросу {Есть ошибки в работе?}' if='$MODE == "Ошибка"' scope="user"/>
