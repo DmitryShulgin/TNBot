@@ -53,21 +53,37 @@
       ]]>
     </script>
   </var>
-	
 
-  <get url="http://62.140.252.108:25451/&#38;set_Heat(TEMP2=$UstOtop)&#38;&#38;" var="Temp" scope="context" >
-  <var name="Ust">  
+  <get url="http://62.140.252.108:25451/&#38;get_Heat(TARGET)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TARGET">  
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("set_Heat(TEMP2)", "");
+		var newString = newString.replace('get_Heat(TARGET)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
     </script>
   </var>  
   </get>
-  <output value="Установлена новая целевая температура в доме: $Ust °"/>  
+  
+  <var name="Mp" value="1" if='$TARGET == "Дом:1;Обратка:0;" scope="user"/>
+  <var name="Mp" value="2" if='$TARGET == "Дом:0;Обратка:1;" scope="user"/>
+
+  <get url="http://62.140.252.108:25451/&#38;set_Heat(TEMP$Mp=$UstOtop)&#38;&#38;" var="Temp" scope="context" >
+  <var name="Ust">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("set_Heat(TEMP$Mp)", "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Установлена новая целевая температура в доме: $Ust °" if='$TARGET == "Дом:1;Обратка:0;"/>
+  <output value="Установлена новая целевая температура обратки: $Ust °" if='$TARGET == "Дом:0;Обратка:1;"/> 
   </input>
 
 <!-- ============================================== ИНФО =================================================================================== -->	
