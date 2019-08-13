@@ -32,13 +32,30 @@
 		<output if="full($UserName)">
     		<item>До свидания, $UserName!</item>
     		<item>Пока!</item>
- 		<item>До новых встречь</item>
+ 			<item>До новых встреч!</item>
   		</output>
 		<output value="До свидания!" if="empty($UserName)"/>
  
   </input>
 	 
-	
+<!-- ==============================================ЦЕЛЕВАЯ ОТОПЛЕНИЕ =================================================================================== -->	
+<input pattern="* *становит* целев* темп* * дом* $Number">
+  <get url="http://62.140.252.108:25451/&#38;set_Heat(TEMP2=$Number)&#38;&#38;" var="Temp" scope="context" >
+  <var name="Numbers">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace("set_Heat(TEMP2)", "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Установлена новая целевая температура в доме: $Numbers °"/>  
+  </input>
+
+<!-- ============================================== ИНФО =================================================================================== -->	
 <input pattern="* контроллер *">
 
 <get url="http://62.140.252.108:25451/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
