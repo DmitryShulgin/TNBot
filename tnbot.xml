@@ -123,8 +123,72 @@
     </script>
   </var>  
   </get>
-  <output value="Тепловой насос работает в режиме поддержания температуры в доме. Команда для установки - Установить температуру в доме 22,1 °" if='$TARGET == "Дом:1;Обратка:0;"'/>
-  <output value="Установлена новая целевая температура обратки: $Ust °" if='$TARGET == "Дом:0;Обратка:1;"'/> 
+  <output value="Тепловой насос работает в режиме поддержания температуры в доме. Команда для установки - Установить температуры в доме 22,1 °." if='$TARGET == "Дом:1;Обратка:0;"'/>
+  <output value="Установлена новая целевая температура обратки: $Ust °." if='$TARGET == "Дом:0;Обратка:1;"'/> 
+  </input>
+  
+ <!-- ============================================== Сменить цель =================================================================================== -->
+ 
+  <input pattern="* установ* цель отопления температур* обратки* *" scope="user">
+
+ <get url="http://62.140.252.108:25451/&#38;get_Heat(TARGET)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TARGET">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace('get_Heat(TARGET)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+
+  <get url="http://62.140.252.108:25451/&#38;set_Heat(TARGET=1)&#38;&#38;" var="Temp" if='$TARGET == "Дом:1;Обратка:0;"' scope="context" >
+  <var name="Ust">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		newString = newString.replace("set_Heat(TARGET=1)", "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Тепловой насос работает в режиме поддержания температуры обратки." if='$TARGET == "Дом:0;Обратка:1;"'/>
+  <output value="Установлена новая цель отопления - температура обратки." if='$TARGET == "Дом:1;Обратка:0;"'/> 
+  </input>
+  
+  <input pattern="* установ* цель отопления температур* * дом* *" scope="user">
+
+ <get url="http://62.140.252.108:25451/&#38;get_Heat(TARGET)&#38;&#38;" var="Temp" scope="context" >
+  <var name="TARGET">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace('get_Heat(TARGET)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+
+  <get url="http://62.140.252.108:25451/&#38;set_Heat(TARGET=0)&#38;&#38;" var="Temp" if='$TARGET == "Дом:0;Обратка:1;"' scope="context" >
+  <var name="Ust">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		newString = newString.replace("set_Heat(TARGET=0)", "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Тепловой насос работает в режиме поддержания температуры в доме." if='$TARGET == "Дом:1;Обратка:0;"'/>
+  <output value="Установлена новая цель отопления - температура в доме." if='$TARGET == "Дом:0;Обратка:1;"'/> 
   </input>
 
 <!-- ============================================== ИНФО =================================================================================== -->	
