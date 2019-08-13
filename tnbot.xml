@@ -46,6 +46,8 @@
       <![CDATA[        
 		var newString = $Text.replace(",", ".");
 		newString = newString.replace("°", "");
+		newString = newString.replace("градуса", "");
+		newString = newString.replace(/^\x7f+/, "");		
       ]]>
     </script>
   </var>
