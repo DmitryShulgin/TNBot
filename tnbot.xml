@@ -75,7 +75,8 @@
    <script>
       <![CDATA[        
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace("set_Heat(TEMP$Mp)", "");
+		newString = newString.replace("set_Heat(TEMP1)", "");
+		newString = newString.replace("set_Heat(TEMP2)", "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
