@@ -67,8 +67,8 @@
   </var>  
   </get>
   
-  <var name="Mp" value="1" if='$TARGET == "Дом:1;Обратка:0;" scope="user"/>
-  <var name="Mp" value="2" if='$TARGET == "Дом:0;Обратка:1;" scope="user"/>
+  <var name="Mp" value="1" if='$TARGET == "Дом:1;Обратка:0;"' scope="user"/>
+  <var name="Mp" value="2" if='$TARGET == "Дом:0;Обратка:1;"' scope="user"/>
 
   <get url="http://62.140.252.108:25451/&#38;set_Heat(TEMP$Mp=$UstOtop)&#38;&#38;" var="Temp" scope="context" >
   <var name="Ust">  
