@@ -47,8 +47,9 @@
 		var newString = $Text.replace(",", ".");
 		newString = newString.replace("°", "");
 		newString = newString.replace("градуса", "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/^\x7f+/, "");		
+		newString = newString.replace("градусов", "");
+		newString = newString.replace(/\s/g, '');
+		
       ]]>
     </script>
   </var>
