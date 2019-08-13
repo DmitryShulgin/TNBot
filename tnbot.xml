@@ -39,7 +39,7 @@
   </input>
 	 
 <!-- ==============================================ЦЕЛЕВАЯ ОТОПЛЕНИЕ =================================================================================== -->	
-<input pattern="* установит* температур* * дом* $Text $Date *" scope="user">
+<input pattern="* установит* температур* * дом* $Text *" scope="user">
 
 	<var name="UstOtop">
 	   <script>
@@ -47,6 +47,7 @@
 		var newString = $Text.replace(",", ".");
 		newString = newString.replace("°", "");
 		newString = newString.replace("градуса", "");
+		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/^\x7f+/, "");		
       ]]>
     </script>
