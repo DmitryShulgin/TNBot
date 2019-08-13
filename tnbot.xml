@@ -32,7 +32,7 @@
 		<output if="full($UserName)">
     		<item>До свидания, $UserName!</item>
     		<item>Пока!</item>
- 			<item>До новых встречь!</item>
+ 		<item>До новых встречь</item>
   		</output>
 		<output value="До свидания!" if="empty($UserName)"/>
  
