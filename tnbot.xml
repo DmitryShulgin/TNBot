@@ -29,8 +29,12 @@
 <input pattern="* (пока|до свидания|закрыть|ок) * ">
  <var name="end_session" value="javascript: true"/>
    
-		  <output value="До свидания, $UserName!" if="full($UserName)"/>
-		  <output value="До свидания!" if="empty($UserName)"/>
+		<output if="full($UserName)">
+    		<item>До свидания, $UserName!</item>
+    		<item>Пока!</item>
+ 			<item>До новых всттречь!</item>
+  		</output>
+		<output value="До свидания!" if="empty($UserName)"/>
  
   </input>
 	 
