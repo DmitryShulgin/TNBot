@@ -879,7 +879,7 @@
   				<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     					<input pattern="$Text" scope="user">
     						<var name="UserName" value="$Text" scope="user"/>
-        						<context if='$UserName == "дмитрий"'>
+        						<context modal="true" if='$UserName == "дмитрий"'>
           							<output value='Пользователь Дмитрий авторизован с правами владельца. Продолжить?'/>
             							<input pattern="$Text" scope="user">
             							<get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
@@ -902,7 +902,7 @@
 						</input>  
       	</context>
         
-  <context if='$UserName == "дмитрий"'>
+  <context modal="true" if='$UserName == "дмитрий"'>
   		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -964,7 +964,7 @@
           </input>  
   </context>
         
-  <context if='$UserName == "дмитрий"'>
+  <context modal="true" if='$UserName == "дмитрий"'>
   		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             	<get url="http://62.140.252.108:25451/&#38;set_OFF&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1019,7 +1019,7 @@
     		</input>  
   </context>
         
-  <context if='$UserName == "дмитрий"'>
+  <context modal="true" if='$UserName == "дмитрий"'>
   	<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
 		<input pattern="$Text" scope="user">
          <get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1076,7 +1076,7 @@
 	    </input>  
 	 </context>
         
-  <context if='$UserName == "дмитрий"'>
+  <context modal="true" if='$UserName == "дмитрий"'>
   		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             	<get url="http://62.140.252.108:25451/&#38;set_Boiler(ON=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1136,7 +1136,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1198,7 +1198,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1259,7 +1259,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1321,7 +1321,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1382,7 +1382,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1442,7 +1442,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1503,7 +1503,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1564,7 +1564,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1625,7 +1625,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1686,7 +1686,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=1)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1751,7 +1751,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RCOMP=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1813,7 +1813,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPI=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1874,7 +1874,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPO=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1936,7 +1936,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RTRV=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -1997,7 +1997,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RBOILER=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2057,7 +2057,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RHEAT=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2118,7 +2118,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN1=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2179,7 +2179,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RFAN2=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2240,7 +2240,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(R3WAY=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
@@ -2301,7 +2301,7 @@
           </input>  
         </context>
         
-   <context if='$UserName == "дмитрий"'>
+   <context if='$UserName == "дмитрий"' modal="true">
   <output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Продолжить?"/>     
             <input pattern="$Text" scope="user">
             <get url="http://62.140.252.108:25451/&#38;set_Relay(RPUMPB=0)&#38;&#38;" var="Temp" if='$Text == "да"'>
