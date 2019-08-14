@@ -39,6 +39,53 @@
  
   </input>
 	 
+
+<!-- ==============================================ЦЕЛЕВАЯ ГВС =================================================================================== -->	
+<input pattern="* установ* температур* * (гвс|горячей воды|воды) $Text *" scope="user">
+
+	<var name="UstGVS">
+	   <script>
+      <![CDATA[        
+		var newString = $Text.replace(",", ".");
+		newString = newString.replace("°", "");
+		newString = newString.replace("градуса", "");
+		newString = newString.replace("градусов", "");
+		newString = newString.replace(/\s/g, '');
+		
+      ]]>
+    </script>
+  </var>
+
+  <get url="http://62.140.252.108:25451/&#38;get_Boiler(ON)&#38;&#38;" var="Temp" scope="context" >
+  <var name="BoilerON">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		var newString = newString.replace('get_Boiler(ON)', "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+
+  <get url="http://62.140.252.108:25451/&#38;set_Boiler(TRG=$UstGVS)&#38;&#38;" var="Temp" if='$BoilerON == "1"' scope="context" >
+  <var name="TRG">  
+   <script>
+      <![CDATA[        
+		var newString = $Temp.replace("=", "");
+		newString = newString.replace("set_Boiler(TRG)", "");
+		newString = newString.replace(/^\x7f+/, "");
+		newString = newString.replace(/\x7f\x7f*$/, "");
+      ]]>
+    </script>
+  </var>  
+  </get>
+  <output value="Установлена новая целевая температура ГВС: $TRG °" if='$BoilerON == "1"'/>
+  <output value="Подготовка ГВС в данный момент отключена. Команды для включения ГВС - Включить нагрев ГВС, Включить нагрев горячей воды." if='$BoilerON == "0"'/> 
+  </input>
+  
+
 <!-- ==============================================ЦЕЛЕВАЯ ОТОПЛЕНИЕ =================================================================================== -->	
 <input pattern="* установ* температур* * дом* $Text *" scope="user">
 
@@ -130,7 +177,7 @@
   
  <!-- ============================================== Сменить цель =================================================================================== -->
  
-  <input pattern="* установ* цель отопления температур* обратки* *" scope="user">
+  <input pattern="* установ* цель отоплен* температур* * обратки* *" scope="user">
 
  <get url="http://62.140.252.108:25451/&#38;get_Heat(TARGET)&#38;&#38;" var="Temp" scope="context" >
   <var name="TARGET">  
@@ -161,7 +208,7 @@
   <output value="Установлена новая цель отопления - температура обратки." if='$TARGET == "Дом:1;Обратка:0;"'/> 
   </input>
   
-  <input pattern="* установ* цель отопления температур* * дом* *" scope="user">
+  <input pattern="* установ* цель отоплен* температур* * дом* *" scope="user">
 
  <get url="http://62.140.252.108:25451/&#38;get_Heat(TARGET)&#38;&#38;" var="Temp" scope="context" >
   <var name="TARGET">  
@@ -948,7 +995,7 @@
 </input>
 
 <!-- ============================================== ВКЛЮЧЕНИЕ ГВС =================================================================================== -->
-<input pattern="* включ* * (нагре* *|* гвс*)">
+<input pattern="* включ* * нагре* (гвс|горячей воды|воды) *">
   <context if="empty($UserName)" modal="true">
   		<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     		<input pattern="$Text" scope="user">
@@ -1005,7 +1052,7 @@
 
 
 <!-- ============================================== ВЫКЛЮЧЕНИЕ ГВС =================================================================================== -->
-<input pattern="* выключ* * (нагре* *|* гвс*)">
+<input pattern="* выключ* * нагре* (гвс|горячей воды|воды) *">
 	<context if="empty($UserName)" modal="true">
   	<output value="Внимание! Необдуманные действия при ручном управлении могут повредить оборудование. Авторизуйтесь, пожалуйста."/>
     	<input pattern="$Text" scope="user">
