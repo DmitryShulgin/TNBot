@@ -19,6 +19,21 @@
      </context>
 
 </input>
+
+<input pattern="авторизац*">
+	 <context modal="true">
+	 <output value="Введите код авторизации..." /> 
+	 
+    <input pattern="$Text" scope="user">
+    <var name="UserName" value="$Text" scope="user"/>
+     
+          <output value="Пользователь Дмитрий авторизован с правами владельца..." if='$UserName == "дмитрий"'/>
+          <output value="Тестовый доступ разрешен..." if='$UserName == "тест"'/>
+          <output value="Пользователь Администратор авторизован с правами администратора..." if='$UserName == "админ"'/>
+		  <output value="Вы не авторизовались. Доступ к управления запрещен. Доступны команды для получения значений температур теплового насоса." />
+     </input>
+     </context>
+</input>
 	 
  
 <input pattern="* помощь *">
