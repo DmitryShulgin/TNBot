@@ -48,7 +48,7 @@
  <var name="end_session" value="javascript: true"/>
  <var name="UserName" value="" scope="user"/>  
 		<output>
-    		<item>До свидания, $UserName!</item>
+    		<item>До свидания!</item>
     		<item>Пока!</item>
  			<item>До новых встреч!</item>
   		</output>
@@ -2351,14 +2351,14 @@
 
 <!-- ==========================ПОЛОЖЕНИЕ ЭРВ =============================================== -->
 
-<input pattern="* (положен*|позиц*|шаг*) * (эрв|регулир*) *">
-  <get url="http://62.140.252.108:25451/&#38;get_EEV&#38;&#38;" var="Temp" scope="user" >
+<input pattern="* (положен*|позиц*|шаг*) * (эрв*|регулир*|вентел*) *">
+  <get url="http://62.140.252.108:25451/&#38;get_pEEV(POSpp)&#38;&#38;" var="Temp" scope="user" >
   <var name="EEV">  
    <script>
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('get_EEV', "");
+		var newString = newString.replace('get_pEEV(POSpp)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -2370,14 +2370,14 @@
   
   </input>
 
-<input pattern="* новое (положен*|позиц*|шаг*) * (эрв|регулир*) * $Number шаг* ">
-  <get url="http://62.140.252.108:25451/&#38;set_EEV($Number)&#38;&#38;" var="Temp" scope="user" >
+<input pattern="* новое (положен*|позиц*|шаг*) * (эрв*|регулир*|вентел*) * $Number шаг* ">
+  <get url="http://62.140.252.108:25451/&#38;set_pEEV(MANUAL=$Number)&#38;&#38;" var="Temp" scope="user" >
   <var name="setEEV">  
    <script>
       <![CDATA[
         
 		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_EEV($Number)', "");
+		var newString = newString.replace('set_pEEV(MANUAL)', "");
 		newString = newString.replace(/^\x7f+/, "");
 		newString = newString.replace(/\x7f\x7f*$/, "");
       ]]>
@@ -2385,11 +2385,11 @@
   </var>
   </get>
 
-  <output value='ЭРВ установлено в положение $Number шагов.'/>
+  <output value='ЭРВ установлено в положение $setEEV шагов.'/>
   
   </input>
   
-  <input pattern="* установит* * (эрв|регулир*) * (ноль|начал*|0) *">
+  <input pattern="* установит* * (эрв*|регулир*|вентел*) * (ноль|начал*|0) *">
   <get url="http://62.140.252.108:25451/&#38;set_zeroEEV&#38;&#38;" var="Temp" scope="user" >
   <var name="zeroEEV">  
    <script>
