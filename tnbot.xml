@@ -2351,7 +2351,7 @@
 
 <!-- ==========================ПОЛОЖЕНИЕ ЭРВ =============================================== -->
 
-<input pattern="[в] * (положен*|позиц*|шаг*) * (эрв*|регулир*|вентел*) *">
+<input pattern="[в] * (откр*|положен*|позиц*|шаг*) * (эрв*|регулир*|вентел*) *">
   <get url="http://62.140.252.108:25451/&#38;get_pEEV(POSpp)&#38;&#38;" var="Temp" scope="user" >
   <var name="EEV">  
    <script>
@@ -2366,7 +2366,7 @@
   </var>
   </get>
 
-  <output value='ЭРВ открыто на $EEV шагов.'/>
+  <output value='ЭРВ открыт на $EEV шагов.'/>
   
   </input>
 
@@ -2385,7 +2385,7 @@
   </var>
   </get>
 
-  <output value='ЭРВ установлено в положение $setEEV шагов.'/>
+  <output value='ЭРВ установлен в положение $setEEV шагов.'/>
   
   </input>
   
@@ -2404,89 +2404,9 @@
   </var>
   </get>
 
-  <output value='ЭРВ установлено в положение Ноль - ЭРВ закрыто.'/>
+  <output value='ЭРВ установлен в положение Ноль - ЭРВ закрыто.'/>
   
   </input>
 
-
-
-
-<input pattern="* (ON)">
-  <get url="http://62.140.252.108:25451/&#38;set_ON&#38;&#38;" var="Temp" scope="user" >
-  <var name="ON">  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('set_ON', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  
-  
-  
-      <!--<param name="APPID" value="API_KEY"/>
-    <param name="units" value="metric"/>
-    <param name="lat" value="$UserLatitude"/>
-    <param name="lon" value="$UserLongitude"/> -->
-  </get>
-
-  <output value='$ON'/>
-  
-  </input> 
-
-<input pattern="* (MODE)">
-  <get url="http://62.140.252.108:25451/&#38;get_MODE&#38;&#38;" var="Temp" scope="user" >
-  <var name="MODE">  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('get_MODE', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  
-  
-  
-      <!--<param name="APPID" value="API_KEY"/>
-    <param name="units" value="metric"/>
-    <param name="lat" value="$UserLatitude"/>
-    <param name="lon" value="$UserLongitude"/> -->
-  </get>
-
-  <output value='$MODE'/>
-  
-  </input> 
-
-<input pattern="* (BOILER)">
-  <get url="http://62.140.252.108:25451/&#38;get_Temp(TBOILER)&#38;&#38;" var="Temp" scope="user" >
-  <var name="TBOILER">  
-   <script>
-      <![CDATA[
-        
-		var newString = $Temp.replace("=", "");
-		var newString = newString.replace('get_Temp(TBOILER)', "");
-		newString = newString.replace(/^\x7f+/, "");
-		newString = newString.replace(/\x7f\x7f*$/, "");
-      ]]>
-    </script>
-  </var>
-  
-  
-  
-      <!--<param name="APPID" value="API_KEY"/>
-    <param name="units" value="metric"/>
-    <param name="lat" value="$UserLatitude"/>
-    <param name="lon" value="$UserLongitude"/> -->
-  </get>
-
-  <output value='$TBOILER'/>
-  
-  </input>
 	
 </context>
